@@ -2,6 +2,8 @@ require 'rqrcode'
 require 'crack/xml'
 require 'open-uri'
 require 'nokogiri'
+require 'cobravsmongoose'
+require 'curb'
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
@@ -19,14 +21,23 @@ class UsersController < ApplicationController
   def show
     @qr = RQRCode::QRCode.new(user_url(@user))
   end
-
-  def test
+def test
     app_id = "OWE5NDg1YzM0NTk3NDczNGM0NzQ1ZGM5N2ZkNzQzNWNj"
-    @endpoint_url = "https://www.delivery.com/api/api.php?key=#{app_id}&method=delivery&street=#{current_user.address1}&zip=#{current_user.postal}"
-    current_user.delivery_options = Nokogiri::HTML(open("#{@endpoint_url}"))
+    xml = Curl::Easy.perform("https://www.delivery.com/api/api.php?key=OWE5NDg1YzM0NTk3NDczNGM0NzQ1ZGM5N2ZkNzQzNWNj&method=delivery&street=1019%20W%20jackson%20blvd&zip=60607")
+    current_user.delivery_options = xml.body_str
     current_user.save
+
     redirect_to user_url(current_user.id)
   end
+  # def test
+  #   app_id = "OWE5NDg1YzM0NTk3NDczNGM0NzQ1ZGM5N2ZkNzQzNWNj"
+  #   @endpoint_url = "https://www.delivery.com/api/api.php?key=OWE5NDg1YzM0NTk3NDczNGM0NzQ1ZGM5N2ZkNzQzNWNj&method=delivery&street=1019%20W%20jackson%20blvd&zip=60607"
+  #   #@endpoint_url = "https://www.delivery.com/api/api.php?key=#{app_id}&method=delivery&street=#{current_user.address1}&zip=#{current_user.postal}"
+  #   raw = open(@endpoint_url).read
+  #   current_user.delivery_options = Nokogiri::XML(raw)
+  #   current_user.save
+  #   redirect_to user_url(current_user.id)
+  # end
 
 
   # GET /users/new
