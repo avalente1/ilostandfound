@@ -37,10 +37,8 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
 
-      # Instantiate a Twilio client
       client = Twilio::REST::Client.new(TWILIO_CONFIG['sid'], TWILIO_CONFIG['token'])
 
-      # Create and send an SMS message
       client.account.sms.messages.create(
         from: TWILIO_CONFIG['from'],
         to: @user.cell_number,
@@ -84,27 +82,4 @@ class UsersController < ApplicationController
       params.require(:user).permit(:first_name, :last_name, :cell_show, :cell_number, :email, :email_show, :home_phone_show, :home_phone, :password, :password_confirmation, :address1, :address2, :city, :state, :postal, :qrcode)
     end
 
-    def makecall
-    if !params[:cell_number]
-      redirect_to :action => '.', 'msg' => 'Invalid phone number'
-      return
-    end
-
-    # parameters sent to Twilio REST API
-    data = {
-      :from => CALLER_ID,
-      :to => params[:cell_number],
-      :url => BASE_URL + '/show',
-    }
-
-    begin
-      client = Twilio::REST::Client.new(ACCOUNT_SID, ACCOUNT_TOKEN)
-      client.account.calls.create data
-    rescue StandardError => bang
-      redirect_to :action => '.', 'msg' => "Error #{bang}"
-      return
-    end
-
-    redirect_to :action => '', 'msg' => "Calling #{params['number']}..."
-  end
   end
