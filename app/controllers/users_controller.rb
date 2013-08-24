@@ -21,6 +21,8 @@ class UsersController < ApplicationController
     @qr = RQRCode::QRCode.new(user_url(@user))
     @finder = User.new
     @message = Message.new
+    @user.ip_address = request.location
+    @user.save
   end
 
   def new

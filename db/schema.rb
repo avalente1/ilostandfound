@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130824162541) do
+ActiveRecord::Schema.define(version: 20130824190421) do
 
   create_table "messages", force: true do |t|
     t.integer  "find_id"
@@ -42,6 +42,9 @@ ActiveRecord::Schema.define(version: 20130824162541) do
     t.string   "email"
     t.text     "delivery_options"
     t.string   "qr_code_uid"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "ip_address"
   end
 
 end
