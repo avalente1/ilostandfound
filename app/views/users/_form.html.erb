@@ -20,43 +20,26 @@
     <%= f.text_field :last_name %>
   </div>
   <div class="field">
-    <%= f.label :cell_show %><br>
-    <%= f.check_box :cell_show %>
-  </div>
-  <div class="field">
     <%= f.label :cell_number %><br>
     <%= f.text_field :cell_number %>
+    <%= f.check_box :cell_show %> Show to finder?
   </div>
   <div class="field">
     <%= f.label :email %><br>
     <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :email_show %><br>
-    <%= f.check_box :email_show %>
-  </div>
-  <div class="field">
-    <%= f.label :home_phone_show %><br>
-    <%= f.check_box :home_phone_show %>
+    <%= f.check_box :email_show %> Show to finder?
   </div>
   <div class="field">
     <%= f.label :home_phone %><br>
     <%= f.text_field :home_phone %>
+    <%= f.check_box :home_phone_show %> Show to finder?
   </div>
   <div class="field">
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
-  </div>
-    <div class="field">
-    <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="field">
-    <%= f.label :address1 %><br>
+    <%= f.label :address1, "Address 1:" %><br>
     <%= f.text_field :address1 %>
   </div>
   <div class="field">
-    <%= f.label :address2 %><br>
+    <%= f.label :address2, "Address 2:" %><br>
     <%= f.text_field :address2 %>
   </div>
   <div class="field">
@@ -71,6 +54,15 @@
     <%= f.label :postal %><br>
     <%= f.text_field :postal %>
   </div>
+  <div class="field">
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </div>
+    <div class="field">
+    <%= f.label :password_confirmation %><br>
+    <%= f.password_field :password_confirmation %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

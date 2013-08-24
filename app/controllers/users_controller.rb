@@ -10,6 +10,10 @@ class UsersController < ApplicationController
   def home
   end
 
+  def find
+    redirect_to user_url(params[:qr_id])
+  end
+
   def print
     @size = params[:size]
   end
@@ -17,12 +21,10 @@ class UsersController < ApplicationController
   #   @users = User.all
   # end
 
-  # GET /users/1
-  # GET /users/1.json
   def show
     @qr = RQRCode::QRCode.new(user_url(@user))
   end
-def test
+  def test
     app_id = "OWE5NDg1YzM0NTk3NDczNGM0NzQ1ZGM5N2ZkNzQzNWNj"
     xml = Curl::Easy.perform("https://www.delivery.com/api/api.php?key=OWE5NDg1YzM0NTk3NDczNGM0NzQ1ZGM5N2ZkNzQzNWNj&method=delivery&street=1019%20W%20jackson%20blvd&zip=60607")
     #current_user.delivery_options = xml.body_str
