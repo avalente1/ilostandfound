@@ -25,11 +25,27 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = Message.new(message_params)
+    @message.owner_id = params[:owner_id]
 
-
-    unless @message.find_id.present?
-
-
+    if current_user.present?
+      @message.find_id = current_user.id
+      if @message.save
+        flash[:notice] = "Thank you, the owner have been notified. Now you can also use iLostAndFound"
+        redirect_to user_url(current_user)
+      end
+    else
+      @finder = User.new(finder_params)
+      if @finder.save
+        session[:user_id] = @finder.id
+        @message.find_id = @finder.id
+        if @message.save
+          flash[:notice] = "Thank you, the owner have been notified. Now you can also use iLostAndFound"
+          redirect_to user_url(current_user)
+        else
+        end
+      else
+      end
+    end
 
 
   end
@@ -67,5 +83,10 @@ class MessagesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def message_params
       params.require(:message).permit(:find_id, :owner_id, :text, :subject)
+    end
+
+    def finder_params
+      params.require(:user).permit(:first_name, :last_name, :cell_number, :email, :password, :password_confirmation)
+
     end
 end
