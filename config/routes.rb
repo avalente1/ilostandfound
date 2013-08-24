@@ -1,8 +1,14 @@
 Ilostandfound::Application.routes.draw do
+
+  root 'users#home'
+
+  get 'home' => 'users#home', as: "home"
+
   resources :messages
 
   resources :users
 
+  get "/delivery" => "auth#delivery", as: "auth_delivery"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
