@@ -11,14 +11,18 @@
     <p>
       <strong>Cell number:</strong>
       <%= @user.cell_number %>
+      <%= '<i class="icon-check-sign"></i>'.html_safe if current_user.cell_show %>
     </p>
     <p>
       <strong>Email</strong>
       <%= @user.email %>
+      <%= '<i class="icon-check-sign"></i>'.html_safe if current_user.email_show %>
     </p>
     <p>
       <strong>Home phone:</strong>
       <%= @user.home_phone %>
+       <%= '<i class="icon-check-sign"></i>'.html_safe if current_user.home_phone_show
+        %>
     </p>
     <p>
       <strong>Address:</strong>
@@ -38,22 +42,9 @@
   </div>
 </div>
 <div class="row">
-  <div class="col1 col-md-offset-1">
-    <strong>My personal QR code:</strong>
+  <div class="col4 col-md-offset-1">
+    <%= image_tag @user.qrcode, class: "img_size" %>
   </div>
-  <table class="col4 col-md-offset-1">
-   <% @qr.modules.each_index do |x| -%>
-     <tr>
-     <% @qr.modules.each_index do |y| -%>
-      <% if @qr.dark?(x,y) -%>
-        <td class="black"/>
-      <% else -%>
-        <td class="white"/>
-      <% end -%>
-     <% end -%>
-     </tr>
-   <% end -%>
-  </table>
 </div>
 <div class="row">
   <div class="col4 col-md-offset-1">
@@ -70,10 +61,12 @@
   </div>
 </div>
 
-  <% elsif current_user.present? && (params[:id] != current_user.id)  %>
-
   <% else %>
-    <%= "#{@user.first_name}" %>
+      <div class="welcome_text_show_page">
+      <%= "You found something belonging to: #{@user.first_name} #{@user.last_name}" %>
+      </div>
+      <h5 class="margin_bottom">Please complete the form below and we will send an anonymous message to the owner.</h5>
+
       <% if @user.cell_show %>
         <%= @user.cell_number %>
       <% end %>
@@ -84,7 +77,8 @@
         <%= @user.home_phone %>
       <% end %>
 
-      <%#= render "finder_form" TO be added from James %>
+
+      <%= render "form_finder"%>
 
 <% end %>
 

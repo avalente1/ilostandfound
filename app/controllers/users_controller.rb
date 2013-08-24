@@ -1,6 +1,10 @@
 require 'rqrcode'
+<<<<<<< HEAD
 require 'open-uri'
 require 'twilio-ruby'
+=======
+require 'rqrcode_png'
+>>>>>>> 994819abb316c1f66c2b8a5ee742da2f1fe2f502
 
 class UsersController < ApplicationController
 
@@ -22,7 +26,12 @@ class UsersController < ApplicationController
   # end
 
   def show
+<<<<<<< HEAD
     @qr = RQRCode::QRCode.new(user_url(@user))
+=======
+    @finder = User.new
+    @message = Message.new
+>>>>>>> 994819abb316c1f66c2b8a5ee742da2f1fe2f502
   end
 
   # GET /users/new
@@ -36,6 +45,7 @@ class UsersController < ApplicationController
 
   # POST /users
   # POST /users.json
+<<<<<<< HEAD
 def create
     @user = User.new(user_params)
     if @user.save
@@ -56,6 +66,28 @@ def create
     else
       render :new
     end
+=======
+  def create
+    @user = User.new(user_params)
+
+    respond_to do |format|
+      if @user.save
+        qr = RQRCode::QRCode.new(user_url(@user), size: 4, level: :h)
+        png = qr.to_img
+        png.resize(400, 400).save("app/assets/images/qrcodes/#{@user.id}qrcode.png")
+        @user.qrcode =  "/assets/qrcodes/#{@user.id}qrcode.png"
+        @user.save
+        session[:user_id] = @user.id
+        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @user }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+
+
+>>>>>>> 994819abb316c1f66c2b8a5ee742da2f1fe2f502
   end
 
 

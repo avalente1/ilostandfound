@@ -39,4 +39,21 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 gem 'twilio-ruby'
 
+
 gem 'sendgrid'
+gem 'nokogiri'
+gem 'curb'
+gem 'cobravsmongoose'
+gem 'rack-cache', :require => 'rack/cache'
+gem 'dragonfly', '~>0.9.15'
+gem 'rqrcode_png'
+
+
+# Use unicorn as the app server
+# gem 'unicorn'
+
+# Use Capistrano for deployment
+# gem 'capistrano', group: :development
+
+# Use debugger
+# gem 'debugger', group: [:development, :test]

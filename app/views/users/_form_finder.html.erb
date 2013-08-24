@@ -1,33 +1,51 @@
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
+<%= form_for(@message) do |f| %>
+  <% if @message.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <h2><%= pluralize(@message.errors.count, "error") %> prohibited this user from being saved:</h2>
 
       <ul>
-      <% @user.errors.full_messages.each do |msg| %>
+      <% @message.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
+  <% unless current_user.present? %>
 
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :cell_number %><br>
-    <%= f.text_field :cell_number %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
+    <%= fields_for(@finder) do |ff| %>
+      <div class="field">
+        <%= ff.label :first_name %><br>
+        <%= ff.text_field :first_name %>
+      </div>
+      <div class="field">
+        <%= ff.label :last_name %><br>
+        <%= ff.text_field :last_name %>
+      </div>
+      <div class="field">
+        <%= ff.label :cell_number %><br>
+        <%= ff.text_field :cell_number %>
+      </div>
+      <div class="field">
+        <%= ff.label :email %><br>
+        <%= ff.text_field :email %>
+      </div>
+    <% end %>
+
+  <% end %>
+
+  <div>
+    <%= f.label :subject %><br>
+    <%= f.text_field :subject %>
   </div>
 
+  <div>
+    <%= f.label :text, "Message" %><br>
+    <%= f.text_area :text, class: "test_area_size" %>
+  </div>
+
+  <div>
+    <%= hidden_field_tag :owner_id, @user.id %>
+  </div>
 
   <div class="actions">
     <%= f.submit %>
