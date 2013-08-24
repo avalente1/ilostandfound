@@ -40,11 +40,6 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        qr = RQRCode::QRCode.new(user_url(@user), size: 4, level: :h)
-        png = qr.to_img
-        png.resize(400, 400).save("app/assets/images/qrcodes/#{@user.id}qrcode.png")
-        @user.qrcode =  "/assets/qrcodes/#{@user.id}qrcode.png"
-        @user.save
         session[:user_id] = @user.id
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render action: 'show', status: :created, location: @user }
