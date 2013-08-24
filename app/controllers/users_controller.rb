@@ -24,7 +24,9 @@ class UsersController < ApplicationController
 def test
     app_id = "OWE5NDg1YzM0NTk3NDczNGM0NzQ1ZGM5N2ZkNzQzNWNj"
     xml = Curl::Easy.perform("https://www.delivery.com/api/api.php?key=OWE5NDg1YzM0NTk3NDczNGM0NzQ1ZGM5N2ZkNzQzNWNj&method=delivery&street=1019%20W%20jackson%20blvd&zip=60607")
-    current_user.delivery_options = xml.body_str
+    #current_user.delivery_options = xml.body_str
+    hash = Hash.from_xml(xml.parsed_response.gsub("\n", ""))
+    current_user.delivery_options = CobraVsMongoose.xml_to_json(xml)
     current_user.save
 
     redirect_to user_url(current_user.id)
