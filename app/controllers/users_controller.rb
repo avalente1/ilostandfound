@@ -1,9 +1,7 @@
 require 'rqrcode'
-require 'crack/xml'
 require 'open-uri'
-require 'nokogiri'
-require 'cobravsmongoose'
-require 'curb'
+require 'twilio-ruby'
+
 class UsersController < ApplicationController
 
   before_action :set_user, only: [:show, :edit, :update, :destroy]
@@ -18,22 +16,13 @@ class UsersController < ApplicationController
   def print
     @size = params[:size]
   end
+
   # def index
   #   @users = User.all
   # end
 
   def show
     @qr = RQRCode::QRCode.new(user_url(@user))
-  end
-  def test
-    app_id = "OWE5NDg1YzM0NTk3NDczNGM0NzQ1ZGM5N2ZkNzQzNWNj"
-    xml = Curl::Easy.perform("https://www.delivery.com/api/api.php?key=OWE5NDg1YzM0NTk3NDczNGM0NzQ1ZGM5N2ZkNzQzNWNj&method=delivery&street=1019%20W%20jackson%20blvd&zip=60607")
-    #current_user.delivery_options = xml.body_str
-    hash = Hash.from_xml(xml.parsed_response.gsub("\n", ""))
-    current_user.delivery_options = CobraVsMongoose.xml_to_json(xml)
-    current_user.save
-
-    redirect_to user_url(current_user.id)
   end
 
   # GET /users/new
@@ -47,21 +36,10 @@ class UsersController < ApplicationController
 
   # POST /users
   # POST /users.json
-  def create
-    @user = User.new(user_params)
-
-    respond_to do |format|
-      if @user.save
-        session[:user_id] = @user.id
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @user }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
+def create
     @user = User.new(user_params)
     if @user.save
+      session[:user_id] = @user.id
       render text: "Thank you! You will receive an SMS shortly with verification instructions."
 
       # Instantiate a Twilio client
@@ -70,16 +48,20 @@ class UsersController < ApplicationController
       # Create and send an SMS message
       client.account.sms.messages.create(
         from: TWILIO_CONFIG['from'],
-        to: @user.phone,
+        to: @user.cell_number,
         body: "Thanks for signing up. To verify your account, please reply HELLO to this message."
       )
+      Notifier.signup_email(@user).deliver
+      redirect_to(@user, :notice => 'User created')
     else
       render :new
     end
   end
 
+
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
+
   def update
     respond_to do |format|
       if @user.update(user_params)
@@ -89,11 +71,12 @@ class UsersController < ApplicationController
         format.html { render action: 'edit' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
+      end
     end
-  end
 
   # DELETE /users/1
   # DELETE /users/1.json
+
   def destroy
     @user.destroy
     respond_to do |format|
@@ -112,7 +95,28 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:first_name, :last_name, :cell_show, :cell_number, :email, :email_show, :home_phone_show, :home_phone, :password, :password_confirmation, :address1, :address2, :city, :state, :postal, :qrcode)
     end
-    def delivery
 
+    def makecall
+    if !params[:cell_number]
+      redirect_to :action => '.', 'msg' => 'Invalid phone number'
+      return
     end
-end
+
+    # parameters sent to Twilio REST API
+    data = {
+      :from => CALLER_ID,
+      :to => params[:cell_number],
+      :url => BASE_URL + '/show',
+    }
+
+    begin
+      client = Twilio::REST::Client.new(ACCOUNT_SID, ACCOUNT_TOKEN)
+      client.account.calls.create data
+    rescue StandardError => bang
+      redirect_to :action => '.', 'msg' => "Error #{bang}"
+      return
+    end
+
+    redirect_to :action => '', 'msg' => "Calling #{params['number']}..."
+  end
+  end
