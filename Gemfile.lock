@@ -30,6 +30,7 @@ GEM
     bcrypt-ruby (3.0.1)
     bcrypt-ruby (3.0.1-x86-mingw32)
     builder (3.1.4)
+    chunky_png (1.2.8)
     cobravsmongoose (0.0.2)
     coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
@@ -91,6 +92,9 @@ GEM
       json (~> 1.4)
     ref (1.0.5)
     rqrcode (0.4.2)
+    rqrcode_png (0.1.1)
+      chunky_png
+      rqrcode
     safe_yaml (0.9.5)
     sass (3.2.10)
     sass-rails (4.0.0)
@@ -145,6 +149,7 @@ DEPENDENCIES
   rack-cache
   rails (= 4.0.0)
   rqrcode
+  rqrcode_png
   sass-rails (~> 4.0.0)
   sdoc
   sqlite3

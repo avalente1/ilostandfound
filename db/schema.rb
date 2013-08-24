@@ -22,13 +22,6 @@ ActiveRecord::Schema.define(version: 20130824150539) do
     t.datetime "updated_at"
   end
 
-  create_table "qrcodes", force: true do |t|
-    t.integer  "user_id"
-    t.string   "cover_image_uid"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -48,6 +41,7 @@ ActiveRecord::Schema.define(version: 20130824150539) do
     t.datetime "updated_at"
     t.string   "email"
     t.text     "delivery_options"
+    t.string   "qr_code_uid"
   end
 
 end
