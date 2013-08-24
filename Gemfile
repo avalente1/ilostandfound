@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby "2.0.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
@@ -43,14 +44,10 @@ gem 'twilio-ruby'
 gem 'rails_12factor', group: :production
 
 gem 'sendgrid'
-gem 'nokogiri'
-gem 'curb'
-gem 'cobravsmongoose'
 gem 'rack-cache', :require => 'rack/cache'
 gem 'dragonfly', '~>0.9.15'
 gem 'rqrcode_png'
 gem 'geocoder'
-gem `protected_attributes`
 
 # Use unicorn as the app server
 # gem 'unicorn'
