@@ -2,6 +2,7 @@ Ilostandfound::Application.routes.draw do
 
   root 'users#home'
   get 'home' => 'users#home', as: "home"
+  get 'find' => 'users#find', as: "find"
   resources :messages
   resources :users
 

@@ -1,1 +1,4 @@
-home.html.erb
+<h2> Please enter code: <%= form_tag find_url, method: "get" do %></h2>
+<%= text_field_tag :qr_id, params[:qr_id] %>
+<%= button_tag "Find Owner", class: "btn btn-primary" %>
+<% end %>
