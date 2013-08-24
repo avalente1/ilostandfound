@@ -25,16 +25,6 @@ class UsersController < ApplicationController
   def show
     @qr = RQRCode::QRCode.new(user_url(@user))
   end
-  def test
-    app_id = "OWE5NDg1YzM0NTk3NDczNGM0NzQ1ZGM5N2ZkNzQzNWNj"
-    xml = Curl::Easy.perform("https://www.delivery.com/api/api.php?key=OWE5NDg1YzM0NTk3NDczNGM0NzQ1ZGM5N2ZkNzQzNWNj&method=delivery&street=1019%20W%20jackson%20blvd&zip=60607")
-    #current_user.delivery_options = xml.body_str
-    hash = Hash.from_xml(xml.parsed_response.gsub("\n", ""))
-    current_user.delivery_options = CobraVsMongoose.xml_to_json(xml)
-    current_user.save
-
-    redirect_to user_url(current_user.id)
-  end
 
   # GET /users/new
   def new
@@ -60,22 +50,8 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
-    @user = User.new(user_params)
-    if @user.save
-      render text: "Thank you! You will receive an SMS shortly with verification instructions."
 
-      # Instantiate a Twilio client
-      client = Twilio::REST::Client.new(TWILIO_CONFIG['sid'], TWILIO_CONFIG['token'])
 
-      # Create and send an SMS message
-      client.account.sms.messages.create(
-        from: TWILIO_CONFIG['from'],
-        to: @user.phone,
-        body: "Thanks for signing up. To verify your account, please reply HELLO to this message."
-      )
-    else
-      render :new
-    end
   end
 
   # PATCH/PUT /users/1
