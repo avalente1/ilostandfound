@@ -50,6 +50,7 @@ gem 'rack-cache', :require => 'rack/cache'
 gem 'dragonfly', '~>0.9.15'
 gem 'rqrcode_png'
 gem 'geocoder'
+gem `protected_attributes`
 
 # Use unicorn as the app server
 # gem 'unicorn'
