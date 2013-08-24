@@ -15,3 +15,19 @@
 .img_size {
   width: 600px;
 }
+
+.test_area_size {
+  width: 400px;
+  height: 150px;
+}
+
+.welcome_text_show_page{
+  margin: 30px 0px;
+  font-size: 20px;
+  color: red;
+  font-weight: bold;
+}
+
+.margin_bottom {
+  margin-bottom: 20px;
+}

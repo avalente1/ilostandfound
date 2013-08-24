@@ -62,7 +62,11 @@
 </div>
 
   <% else %>
-    <%= "#{@user.first_name}" %>
+      <div class="welcome_text_show_page">
+      <%= "You found something belonging to: #{@user.first_name} #{@user.last_name}" %>
+      </div>
+      <h5 class="margin_bottom">Please complete the form below and we will send an anonymous message to the owner.</h5>
+
       <% if @user.cell_show %>
         <%= @user.cell_number %>
       <% end %>
@@ -72,6 +76,7 @@
       <% if @user.home_phone_show %>
         <%= @user.home_phone %>
       <% end %>
+
 
       <%= render "form_finder"%>
 

@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130824150539) do
+ActiveRecord::Schema.define(version: 20130824162541) do
 
   create_table "messages", force: true do |t|
     t.integer  "find_id"
     t.integer  "owner_id"
-    t.string   "text"
     t.string   "subject"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "text"
   end
 
   create_table "users", force: true do |t|
