@@ -11,14 +11,17 @@
     <p>
       <strong>Cell number:</strong>
       <%= @user.cell_number %>
+      <%= '<i class="icon-check-sign"></i>'.html_safe if current_user.cell_show %>
     </p>
     <p>
       <strong>Email</strong>
       <%= @user.email %>
+      <%= '<i class="icon-check-sign"></i>'.html_safe if current_user.email_show %>
     </p>
     <p>
       <strong>Home phone:</strong>
       <%= @user.home_phone %>
+       <%= '<i class="icon-check-sign"></i>'.html_safe if current_user.home_phone_show %>
     </p>
     <p>
       <strong>Address:</strong>
@@ -69,8 +72,6 @@
     <%= link_to 'Show me delivery options', test_url, class: "btn btn-primary" %>
   </div>
 </div>
-
-  <% elsif current_user.present? && (params[:id] != current_user.id)  %>
 
   <% else %>
     <%= "#{@user.first_name}" %>

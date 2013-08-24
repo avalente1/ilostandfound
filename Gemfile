@@ -42,6 +42,8 @@ gem 'crack' # in Gemfile
 gem 'nokogiri'
 gem 'curb'
 gem 'cobravsmongoose'
+gem 'rack-cache', :require => 'rack/cache'
+gem 'dragonfly', '~>0.9.15'
 
 # Use unicorn as the app server
 # gem 'unicorn'

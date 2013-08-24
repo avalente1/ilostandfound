@@ -11,13 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130824025825) do
+ActiveRecord::Schema.define(version: 20130824150539) do
 
   create_table "messages", force: true do |t|
     t.integer  "find_id"
     t.integer  "owner_id"
     t.string   "text"
     t.string   "subject"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "qrcodes", force: true do |t|
+    t.integer  "user_id"
+    t.string   "cover_image_uid"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
