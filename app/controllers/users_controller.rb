@@ -1,5 +1,7 @@
 require 'rqrcode'
+require 'crack/xml'
 require 'open-uri'
+require 'nokogiri'
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
@@ -16,12 +18,16 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @qr = RQRCode::QRCode.new(user_url(@user))
+  end
+
+  def test
     app_id = "OWE5NDg1YzM0NTk3NDczNGM0NzQ1ZGM5N2ZkNzQzNWNj"
     @endpoint_url = "https://www.delivery.com/api/api.php?key=#{app_id}&method=delivery&street=#{current_user.address1}&zip=#{current_user.postal}"
-    result = open(@endpoint_url).read
-    @parsed_result = Rack::Utils.parse_query(result)
-    redirect_to user_url(current_user)
+    current_user.delivery_options = Nokogiri::HTML(open("#{@endpoint_url}"))
+    current_user.save
+    redirect_to user_url(current_user.id)
   end
+
 
   # GET /users/new
   def new

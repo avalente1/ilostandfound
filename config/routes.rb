@@ -2,7 +2,6 @@ Ilostandfound::Application.routes.draw do
 
   root 'users#home'
   get 'home' => 'users#home', as: "home"
-  get "/delivery" => "auth#delivery", as: "auth_delivery"
   resources :messages
   resources :users
 
@@ -10,6 +9,8 @@ Ilostandfound::Application.routes.draw do
   post "session" => "sessions#create", as: "sessions"
   delete "/session" => "sessions#destroy", as: "session"
 
+  get "/delivery" => "users#delivery", as: "delivery"
+  get "/test" => "users#test", as: "test"
 end
 
 

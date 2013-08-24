@@ -37,6 +37,10 @@ end
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 
+gem 'crack' # in Gemfile
+
+gem 'nokogiri'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
