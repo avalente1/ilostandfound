@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   # end
 
   def show
-
+    @finder = User.new
   end
 
   # GET /users/new
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
       if @user.save
         qr = RQRCode::QRCode.new(user_url(@user), size: 4, level: :h)
         png = qr.to_img
-        png.resize(90, 90).save("app/assets/images/qrcodes/#{@user.id}qrcode.png")
+        png.resize(400, 400).save("app/assets/images/qrcodes/#{@user.id}qrcode.png")
         @user.qrcode =  "/assets/qrcodes/#{@user.id}qrcode.png"
         @user.save
         session[:user_id] = @user.id
