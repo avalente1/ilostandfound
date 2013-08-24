@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
     if @user.present? && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       flash[:notice] = "User Successfully Logged In"
+      redirect_to user_url(@user.id)
     else
       flash[:error] = "Something Went Wrong, Please Try Again"
       render 'new'

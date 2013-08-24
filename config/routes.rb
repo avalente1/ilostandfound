@@ -7,8 +7,8 @@ Ilostandfound::Application.routes.draw do
   resources :users
 
   get "/session/new" => "sessions#new", as: "new_session"
-  post "session" => "sessions#create", as: "session"
-  delete "/session" => "sessions#destroy"
+  post "session" => "sessions#create", as: "sessions"
+  delete "/session" => "sessions#destroy", as: "session"
 
 end
 
