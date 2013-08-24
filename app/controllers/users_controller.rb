@@ -21,6 +21,7 @@ class UsersController < ApplicationController
 
   def show
     @finder = User.new
+    @message = Message.new
   end
 
   # GET /users/new
