@@ -5,6 +5,7 @@ Ilostandfound::Application.routes.draw do
   get 'find' => 'users#find', as: "find"
   resources :messages
   resources :users
+  resource  :verifications
 
   post "users/:id/print" => "users#print", as: "print"
 

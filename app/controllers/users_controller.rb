@@ -5,6 +5,12 @@ require 'nokogiri'
 require 'cobravsmongoose'
 require 'curb'
 class UsersController < ApplicationController
+class User < ActiveRecord::Base
+  attr_accessible :email, :name, :phone
+
+  validates :name, presence: true
+  validates :email, :phone, presence: true, uniqueness: true
+end
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def home
@@ -51,12 +57,29 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        session[:user_id] = @user.id
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render action: 'show', status: :created, location: @user }
       else
         format.html { render action: 'new' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
+    end
+    @user = User.new(user_params)
+    if @user.save
+      render text: "Thank you! You will receive an SMS shortly with verification instructions."
+
+      # Instantiate a Twilio client
+      client = Twilio::REST::Client.new(TWILIO_CONFIG['sid'], TWILIO_CONFIG['token'])
+
+      # Create and send an SMS message
+      client.account.sms.messages.create(
+        from: TWILIO_CONFIG['from'],
+        to: @user.phone,
+        body: "Thanks for signing up. To verify your account, please reply HELLO to this message."
+      )
+    else
+      render :new
     end
   end
 
