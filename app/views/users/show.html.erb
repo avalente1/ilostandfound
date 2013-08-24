@@ -1,21 +1,13 @@
-<p id="notice"><%= notice %></p>
+
 <div class='row'>
   <div class="span4 col-md-offset-1">
+    <p id="notice"><%= notice %></p>
+    Signed in as: <%= current_user.id %>
+    <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-warning" %>
     <p>
-      <strong>First name:</strong>
-      <%= @user.first_name %>
+      <strong>Name:</strong>
+      <%= "#{@user.first_name} #{@user.last_name}" %>
     </p>
-
-    <p>
-      <strong>Last name:</strong>
-      <%= @user.last_name %>
-    </p>
-
-    <p>
-      <strong>Cell show:</strong>
-      <%= @user.cell_show %>
-    </p>
-
     <p>
       <strong>Cell number:</strong>
       <%= @user.cell_number %>
@@ -25,50 +17,29 @@
       <%= @user.email %>
     </p>
     <p>
-      <strong>Email show:</strong>
-      <%= @user.email_show %>
-    </p>
-
-    <p>
-      <strong>Home phone show:</strong>
-      <%= @user.home_phone_show %>
-    </p>
-
-    <p>
       <strong>Home phone:</strong>
       <%= @user.home_phone %>
     </p>
-
- <%= current_user.id %>
     <p>
-      <strong>Address1:</strong>
+      <strong>Address:</strong>
       <%= @user.address1 %>
-    </p>
-
-    <p>
-      <strong>Address2:</strong>
       <%= @user.address2 %>
+      <%= @user.city %><%= @user.state %><%= @user.postal %>
+    </p>
+    <p>
+      <strong>Points:</strong>
+      <%= "..." %>
+    </p>
+    <p>
+      <strong>Level:</strong>
+      <%= "..." %>
     </p>
 
-    <p>
-      <strong>City:</strong>
-      <%= @user.city %>
-    </p>
-
-    <p>
-      <strong>State:</strong>
-      <%= @user.state %>
-    </p>
-
-    <p>
-      <strong>Postal:</strong>
-      <%= @user.postal %>
-    </p>
   </div>
 </div>
 <div class="row">
   <div class="col1 col-md-offset-1">
-    <strong>Qrcode:</strong>
+    <strong>My personal QR code:</strong>
   </div>
   <table class="col4 col-md-offset-1">
    <% @qr.modules.each_index do |x| -%>
@@ -84,19 +55,18 @@
    <% end -%>
   </table>
 </div>
-
 <div class="row">
   <div class="col4 col-md-offset-1">
-    <%= link_to 'Show me delivery options', test_url%>
-  </div>
-</div>
-<div class="row">
-  <div class="col4 col-md-offset-1">
-    <%= link_to 'Edit', edit_user_path(@user) %> |
-    <%= link_to 'Back', users_path %>
+    <%= form_tag print_url do %>
+      <%= select_tag :size, "<option>Small</option><option>Medium</option><option>Large</option>".html_safe %>
+      <%= submit_tag "Print QR Codes", class: "btn btn-success" %>
+    <% end %>
   </div>
 </div>
 
-<%= current_user.delivery_options %>
-
+<div class="row">
+  <div class="col4 col-md-offset-1">
+    <%= link_to 'Show me delivery options', test_url, class: "btn btn-primary" %>
+  </div>
+</div>
 

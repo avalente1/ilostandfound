@@ -10,11 +10,12 @@ class UsersController < ApplicationController
   def home
   end
 
-  # GET /users
-  # GET /users.json
-  def index
-    @users = User.all
+  def print
+    @size = params[:size]
   end
+  # def index
+  #   @users = User.all
+  # end
 
   # GET /users/1
   # GET /users/1.json
@@ -31,16 +32,6 @@ def test
 
     redirect_to user_url(current_user.id)
   end
-  # def test
-  #   app_id = "OWE5NDg1YzM0NTk3NDczNGM0NzQ1ZGM5N2ZkNzQzNWNj"
-  #   @endpoint_url = "https://www.delivery.com/api/api.php?key=OWE5NDg1YzM0NTk3NDczNGM0NzQ1ZGM5N2ZkNzQzNWNj&method=delivery&street=1019%20W%20jackson%20blvd&zip=60607"
-  #   #@endpoint_url = "https://www.delivery.com/api/api.php?key=#{app_id}&method=delivery&street=#{current_user.address1}&zip=#{current_user.postal}"
-  #   raw = open(@endpoint_url).read
-  #   current_user.delivery_options = Nokogiri::XML(raw)
-  #   current_user.save
-  #   redirect_to user_url(current_user.id)
-  # end
-
 
   # GET /users/new
   def new

@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(:email => params[:email])
     if @user.present? && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      flash[:notice] = "User Successfully Logged In"
+      flash[:notice] = "Welcome back, #{current_user.first_name}"
       redirect_to user_url(@user.id)
     else
       flash[:error] = "Something Went Wrong, Please Try Again"
@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
 
   def destroy
     reset_session
-    flas[:notice] = "User Logged Out"
-    redirect_to
+    flash[:notice] = "User Logged Out"
+    redirect_to new_session_url
   end
 end
