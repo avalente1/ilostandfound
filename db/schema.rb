@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130823235448) do
+ActiveRecord::Schema.define(version: 20130823235724) do
+
+  create_table "messages", force: true do |t|
+    t.integer  "find_id"
+    t.integer  "owner_id"
+    t.string   "text"
+    t.string   "subject"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "first_name"
