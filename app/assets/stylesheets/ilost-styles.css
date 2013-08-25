@@ -44,6 +44,9 @@
   position: relative;
   right: 20px;
 }
+.mr0 {
+  margin-right: 100px;
+}
 
 
 .m10 {
@@ -397,5 +400,10 @@ footer.splash {
   padding: 30px 200px;
   background-color: #0088a1;
   border-bottom: 100px solid #0088a1;
+}
+
+.img_pos {
+  position: relative;
+  left: 80px;
 }
 
