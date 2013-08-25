@@ -8,7 +8,7 @@
         <h1 class="signin-heading">Welcome!</h1>
         <p class="welcometext">Suas error feugiat an quo, lorem legere ei sea. Magna vocent eum ne, usu odio definitionem ex. Pri ex tempor verterem, pri ullum utinam civibus cu, nam in velit affert inermis. Usu te delicata definiebas appellantur, ut ius intellegebat conclusionemque.</p>
       </div>
-    <div class="col-md-5 pt25">
+    <div class="col-md-5 pt50">
       <%= form_for(@user, class: "form-signin") do |f| %>
         <% if @user.errors.any? %>
           <div id="error_explanation">
@@ -25,7 +25,7 @@
       <%= f.text_field :first_name, class: "form-control", placeholder:"First Name" %>
       </div>
         <div class="field">
-
+        <br>
         <%= f.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
       </div>
 
@@ -45,7 +45,7 @@
         <br>
         <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password" %>
       </div>
-
+        <br>
         <%= f.button "Create Account", class: 'btn btn-lg btn-warning btn-block pt20'  %>
     <% end %>
     </div> <!-- /container -->

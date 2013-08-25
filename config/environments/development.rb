@@ -27,12 +27,12 @@ Ilostandfound::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
-<<<<<<< HEAD
-  # Add the fonts path
-config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
 
-# Precompile additional assets
-config.assets.precompile += %w( .svg .eot .woff .ttf )
-=======
->>>>>>> 6eca717ca9b2af032f294d24d4e0c07774d53438
+  # Add the fonts path
+  config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+
+  # Precompile additional assets
+  config.assets.precompile += %w( .svg .eot .woff .ttf )
+
+
 end
