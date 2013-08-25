@@ -5,13 +5,20 @@
     Signed in as: <%= "#{current_user.first_name} #{current_user.last_name}" %>
     <p><% if @messages.any? %>
       <% @messages.each do |message| %>
-      <table class="table">
-        <tr>
-          <td><%= message.try(:cell_number) %></td>
-          <td><%= message.try(:email) %></td>
+      <table class="table table-condensed">
+        <thead>
+          <th>Name</th><th>Cell Number</th><th>Email</th><th>Subject</th><th>Message</th>
+        </thead>
+        <tbody>
+        <tr class="success">
+          <td><%= User.find_by(id: message.find_id).try(:first_name) %></td>
+          <td><%= User.find_by(id: message.find_id).try(:cell_number) %></td>
+          <td><%= User.find_by(id: message.find_id).try(:email) %></td>
           <td><%= message.try(:subject) %></td>
           <td><%= message.try(:text) %></td>
+          <td><%= message.try(:email) %></td>
         </tr>
+        </tbody>
       </table>
       <% end %>
     <% end %></p>
