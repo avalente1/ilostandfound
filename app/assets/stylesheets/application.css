@@ -31,3 +31,70 @@
 .margin_bottom {
   margin-bottom: 20px;
 }
+
+.img_size {
+  width: 300px;
+}
+
+.test_area_size {
+  width: 400px;
+  height: 150px;
+}
+
+.welcome_text_show_page{
+  margin: 30px 0px;
+  font-size: 20px;
+  color: red;
+  font-weight: bold;
+}
+
+.margin_bottom {
+  margin-bottom: 20px;
+}
+
+.multiprint1,
+.multiprint2,
+.multiprint3,
+.multiprint4,
+.multiprint5,
+.multiprint6,
+.multiprint7,
+.multiprint8,
+.multiprint9,
+.multiprint_s {
+  visibility: hidden;
+  display: none;
+}
+@media print {
+.row, .btn-primary, .multiprint {display: none; visibility:hidden;}
+.multiprint_list {visibility: visible; display: inline;}
+
+.multiprint1,
+.multiprint2,
+.multiprint3,
+.multiprint4,
+.multiprint5,
+.multiprint6,
+.multiprint7,
+.multiprint8,
+.multiprint9 {
+visibility: visible;
+display: inline;
+float: left;
+margin:20px;
+}
+
+.multiprint1 {width: 200px}
+.multiprint2 {width: 150px}
+.multiprint3 {width: 100px}
+.multiprint4 {width: 200px}
+.multiprint5 {width: 150px}
+.multiprint6 {width: 100px}
+.multiprint7 {width: 200px}
+.multiprint8 {width: 150px}
+.multiprint9 {width: 100px}
+.multiprint_s {width: 70px}
+
+.groupprint {float:left;clear:both;}
+}
+
