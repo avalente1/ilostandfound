@@ -50,7 +50,7 @@
                 <%= current_user.point_tally %>
               </p>
               <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-warning" %>
-              <%= link_to 'View my QRCode Stats', "http://goo.gl/#analytics/goo.gl/#{@user.qr_code_uid}/all_time", class: "btn btn-primary" %>
+              <%= link_to 'View my QRCode Stats', "http://goo.gl/#analytics/goo.gl/#{@user.qr_code_uid}/all_time", class: "btn btn-success" %>
             </div>
             <div class="col-xs-4 col-sm-4 col-md-4">
               <% if current_user.point_tally >= 1 %>

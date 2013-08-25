@@ -1,4 +1,21 @@
-<h2> Please enter code: <%= form_tag find_url, method: "get" do %></h2>
-<%= text_field_tag :qr_id, params[:qr_id] %>
-<%= button_tag "Find Owner", class: "btn btn-primary" %>
-<% end %>
+<body id="signin-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 hero">
+        <%= image_tag '/assets/iLost&Found_logo2.png' %>
+      </div>
+    </div>
+    <footer class="splash">
+      <div class="col-md-10">
+        <div class="bag">
+          <h3 class="tagline">Sign up now and get your shit back later.</h3>
+          <br>
+          <%= link_to "Yes! I want to get my stuff back!",new_user_url, class: "btn btn-warning btn-lg" %>
+          <%= image_tag '/assets/sticker-bag.png', class: "pull-right" %>
+        </div>
+      </div>
+      <div class="spacer p10"></div>
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</body>
