@@ -49,6 +49,7 @@ gem 'dragonfly', '~>0.9.15'
 gem 'rqrcode_png'
 gem 'geocoder'
 gem 's3'
+gem 'googl'
 gem 'aws-sdk'
 
 # Use unicorn as the app server
