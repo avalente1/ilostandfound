@@ -53,6 +53,15 @@
   visibility: hidden;
   display: none;
 }
+
+
+.btn-primary a,
+.btn-primary a:hover
+{color:white;
+text-decoration: none;
+}
+
+
 @media print {
 .row, .btn-primary, .multiprint {display: none; visibility:hidden;}
 .multiprint_list {visibility: visible; display: inline;}
@@ -71,4 +80,5 @@ margin:10px 20px;
 
 .groupprint {float:left;clear:both;}
 }
+
 
