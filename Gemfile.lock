@@ -72,7 +72,6 @@ GEM
     mime-types (1.24)
     minitest (4.7.5)
     multi_json (1.7.9)
-
     multi_xml (0.5.5)
     nokogiri (1.5.10)
     nokogiri (1.5.10-x86-mingw32)
