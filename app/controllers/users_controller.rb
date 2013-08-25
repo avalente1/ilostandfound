@@ -35,8 +35,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    create_qrcode(@user)
     if @user.save
+      create_qrcode(@user)
       session[:user_id] = @user.id
 
       client = Twilio::REST::Client.new(TWILIO_CONFIG['sid'], TWILIO_CONFIG['token'])
