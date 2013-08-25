@@ -19,8 +19,6 @@ class UsersController < ApplicationController
 
   def show
     @url = user_url(@user)
-    logger.info(@url)
-    @qr = RQRCode::QRCode.new(user_url(@user))
     @finder = User.new
     @message = Message.new
     @messages = Message.where(owner_id: current_user.id)
