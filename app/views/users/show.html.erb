@@ -7,23 +7,23 @@
       <div class='row userview'>
         <div class="mt20 ml20 mr0">
           <p><% if @messages.any? %>
-            <% @messages.each do |message| %>
             <table class="table table-condensed table-hover table-striped">
               <thead>
                 <th>Name</th><th>Cell Number</th><th>Email</th><th>Subject</th><th>Message</th><th>Delivery</th>
               </thead>
               <tbody>
-              <tr class="success">
-                <td><%= User.find_by(id: message.find_id).try(:first_name) %></td>
-                <td><%= User.find_by(id: message.find_id).try(:cell_number) %></td>
-                <td><%= User.find_by(id: message.find_id).try(:email) %></td>
-                <td><%= message.try(:subject) %></td>
-                <td><%= message.try(:text) %></td>
-                <td><%= link_to 'Show me options', test_url, class: "btn btn-primary btn-xs pull-ri" %></td>
-              </tr>
+                <% @messages.each do |message| %>
+                  <tr class="success">
+                    <td><%= User.find_by(id: message.find_id).try(:first_name) %></td>
+                    <td><%= User.find_by(id: message.find_id).try(:cell_number) %></td>
+                    <td><%= User.find_by(id: message.find_id).try(:email) %></td>
+                    <td><%= message.try(:subject) %></td>
+                    <td><%= message.try(:text) %></td>
+                    <td><%= link_to 'Show me options', test_url, class: "btn btn-primary btn-xs pull-ri" %></td>
+                  </tr>
+                <% end %>
               </tbody>
             </table>
-            <% end %>
           <% end %></p>
           </div>
 
