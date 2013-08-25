@@ -5,8 +5,9 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-        <h1 class="signin-heading">Welcome!</h1>
-        <p class="welcometext">Suas error feugiat an quo, lorem legere ei sea. Magna vocent eum ne, usu odio definitionem ex. Pri ex tempor verterem, pri ullum utinam civibus cu, nam in velit affert inermis. Usu te delicata definiebas appellantur, ut ius intellegebat conclusionemque.</p>
+        <img alt="Ilost&amp;found logo2" src="/assets/iLost&amp;Found_logo2.png">
+        <!-- <h1 class="signin-heading">Welcome!</h1>
+        <p class="welcometext">Suas error feugiat an quo, lorem legere ei sea. Magna vocent eum ne, usu odio definitionem ex. Pri ex tempor verterem, pri ullum utinam civibus cu, nam in velit affert inermis. Usu te delicata definiebas appellantur, ut ius intellegebat conclusionemque.</p> -->
       </div>
     <div class="col-md-4 pt50">
       <%= form_for(@user, class: "form-signin") do |f| %>
@@ -46,7 +47,7 @@
         <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password" %>
       </div>
         <br>
-        <%= f.button "Create Account", class: 'btn btn-lg btn-warning btn-block'  %>
+        <%= f.button "Submit", class: 'btn btn-lg btn-warning btn-block'  %>
     <% end %>
     </div> <!-- /container -->
 
