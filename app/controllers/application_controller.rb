@@ -1,4 +1,3 @@
-require 's3'
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -21,6 +20,10 @@ class ApplicationController < ActionController::Base
       # png.resize(400, 400).write(Pathname.new("/#{user.id}qrcode.png"))
       # user.qrcode =  "http://s3-us-west-2.amazonaws.com/ilostandfound/#{user.id}qrcode.png"
       # user.save
+
+      url = Googl.shorten(user_url(user))
+      user.qrcode = "http://chart.googleapis.com/chart?cht=qr&chs=150x150&choe=UTF-8&chld=H&chl=#{url.short_url}"
+      user.save
     end
   end
   helper_method :current_user
