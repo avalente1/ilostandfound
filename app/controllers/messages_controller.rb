@@ -23,6 +23,7 @@ class MessagesController < ApplicationController
       end
     else
       @finder = User.new(finder_params)
+      create_qrcode(@finder)
       if @finder.save
         session[:user_id] = @finder.id
         @message.find_id = @finder.id

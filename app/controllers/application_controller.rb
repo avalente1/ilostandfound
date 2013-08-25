@@ -6,6 +6,15 @@ class ApplicationController < ActionController::Base
   def current_user
     return User.find_by(:id => session[:user_id])
   end
-  helper_method :current_user
 
+  def create_qrcode(user)
+    unless user.qrcode.present?
+      qr = RQRCode::QRCode.new("#{user_url(user)}/#{user.id}", size: 8, level: :h)
+      png = qr.to_img
+      png.resize(400, 400).save("app/assets/images/qrcodes/#{user.id}qrcode.png")
+      user.qrcode =  "/assets/qrcodes/#{user.id}qrcode.png"
+    end
+  end
+  helper_method :current_user
+  helper_method :create_qrcode
 end
