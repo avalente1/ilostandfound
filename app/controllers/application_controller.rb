@@ -10,17 +10,17 @@ class ApplicationController < ActionController::Base
 
   def create_qrcode(user)
     unless user.qrcode.present?
-      qr = RQRCode::QRCode.new(user_url(user))
-      png = qr.to_img.resize(1000, 1000)
-      service = S3::Service.new(:access_key_id => ENV['AWS_ACCESS_KEY_ID'],:secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'])
-      bucket = service.buckets.find('ilostandfound')
+      # qr = RQRCode::QRCode.new(user_url(user))
+      # png = qr.to_img.resize(1000, 1000)
+      # service = S3::Service.new(:access_key_id => ENV['AWS_ACCESS_KEY_ID'],:secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'])
+      # bucket = service.buckets.find('ilostandfound')
 
-      file = bucket.objects.build("#{user.id}qrcode.png")
-      file.content = open("#{png}")
-      file.save
+      # file = bucket.objects.build("#{user.id}qrcode.png")
+      # file.content = png
+      # file.save
       # png.resize(400, 400).write(Pathname.new("/#{user.id}qrcode.png"))
-      user.qrcode =  "http://s3-us-west-2.amazonaws.com/ilostandfound/#{user.id}qrcode.png"
-      user.save
+      # user.qrcode =  "http://s3-us-west-2.amazonaws.com/ilostandfound/#{user.id}qrcode.png"
+      # user.save
     end
   end
   helper_method :current_user
