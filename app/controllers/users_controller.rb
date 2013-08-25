@@ -49,6 +49,7 @@ class UsersController < ApplicationController
         body: "Thanks for signing up. To verify your account, please reply HELLO to this message."
       )
       Notifier.signup_email(@user).deliver
+      Wedeliver.wedeliver_email(@user).deliver
       redirect_to(@user, :notice => 'User created')
     else
       render :new

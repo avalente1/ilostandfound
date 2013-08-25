@@ -32,7 +32,7 @@
 
 @font-face {
     font-family: 'corbert_condensedbold';
-    src: url(CorbertCondensed-Bold-webfont.ttf) format('truetype');
+    src: url('CorbertCondensed-Bold-webfont.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 
@@ -370,4 +370,18 @@ background-repeat:no-repeat;
   background-image:url(../img/iLost&Found_logo.png);
   background-repeat:no-repeat;
 
+}
+
+.default_background {
+  background-color: #a1dbe8;
+}
+.badge_img{
+  width: 80px;
+  margin: 0px 15px;
+}
+
+.url_positioning{
+  position: relative;
+  top: -20px;
+  right: -55px;
 }

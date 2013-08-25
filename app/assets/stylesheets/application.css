@@ -10,10 +10,15 @@
  *
  *= require_self
  *= require_tree .
+ *= require bootstrap.min
+ *= require carousel
+ *= require jumbotron
+ *= require signin
+ *= require ilost-styles
  */
 
 .img_size {
-  width: 300px;
+  width: 200px;
 }
 
 .test_area_size {
@@ -32,9 +37,6 @@
   margin-bottom: 20px;
 }
 
-.img_size {
-  width: 300px;
-}
 
 .test_area_size {
   width: 400px;

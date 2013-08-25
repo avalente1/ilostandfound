@@ -1,3 +1,8 @@
+development:
+  from: '+17738284139'
+  sid: 'AC7fa4ff455cccfcd10969afd4cb071d66'
+  token: 'dc801c01e3d3715c1acda492ac836c8e'
+
 production:
   from: '+17738284139'
   sid: 'AC7fa4ff455cccfcd10969afd4cb071d66'
