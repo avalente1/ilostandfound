@@ -23,11 +23,15 @@ class MessagesController < ApplicationController
       end
     else
       @finder = User.new(finder_params)
+      @finder.password = @finder.first_name.downcase
+      @finder.password_confirmation = @finder.first_name.downcase
+
       if @finder.save
         create_qrcode(@finder)
         session[:user_id] = @finder.id
         @message.find_id = @finder.id
         if @message.save
+          flash[:notice] = "Thank you, the owner have been notified. Now you can also use iLostAndFound"
           redirect_to user_url(current_user)
         else
         end

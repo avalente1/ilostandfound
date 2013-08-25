@@ -5,7 +5,7 @@
         <%= render 'flash' %>
       </div>
       <div class='row'>
-        <div class="col4 mt20">
+        <div class="mt20">
           <p><% if @messages.any? %>
             <% @messages.each do |message| %>
             <table class="table table-condensed table-hover table-striped">
@@ -28,7 +28,7 @@
           </div>
 
           <div class="row">
-            <div class="col-xs-4 col-sm-4 col-md-4">
+            <div class="col-xs-3 col-sm-3 col-md-3">
               <%= image_tag @user.qrcode, class: "img_size" %>
               <div class="url_positioning"><%= "goo.gl/#{@user.qr_code_uid}" %></div>
             </div>
