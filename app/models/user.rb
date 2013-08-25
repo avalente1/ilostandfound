@@ -9,10 +9,7 @@ class User < ActiveRecord::Base
   geocoded_by :ip_address
   after_validation :geocode
 
-
   # before_save :default_password
-
-
 
   # def default_password
   #   unless self.password.present?
@@ -20,5 +17,4 @@ class User < ActiveRecord::Base
   #     self.password_confirmation = self.first_name.downcase
   #   end
   # end
-
 end

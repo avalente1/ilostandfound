@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     if current_user.present?
       @messages = Message.where(owner_id: current_user.id)
     end
-    @user.ip_address = request.location
+    @user.ip_address = request.ip
     @user.save
   end
 
