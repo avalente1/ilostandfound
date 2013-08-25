@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130824233301) do
+ActiveRecord::Schema.define(version: 20130825050827) do
 
   create_table "messages", force: true do |t|
     t.integer  "find_id"
@@ -20,6 +20,11 @@ ActiveRecord::Schema.define(version: 20130824233301) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "text"
+  end
+
+  create_table "points", force: true do |t|
+    t.integer "user_id"
+    t.integer "points"
   end
 
   create_table "users", force: true do |t|
@@ -45,6 +50,7 @@ ActiveRecord::Schema.define(version: 20130824233301) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "ip_address"
+    t.integer  "point_tally",      default: 0
   end
 
 end

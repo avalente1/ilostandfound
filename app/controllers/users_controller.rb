@@ -24,8 +24,8 @@ class UsersController < ApplicationController
     if current_user.present?
       @messages = Message.where(owner_id: current_user.id)
     end
-    # @user.ip_address = request.location
-    # @user.save
+    @user.ip_address = request.ip
+    @user.save
   end
 
   def new
@@ -38,6 +38,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      create_qrcode(@user)
       session[:user_id] = @user.id
 
       client = Twilio::REST::Client.new(TWILIO_CONFIG['sid'], TWILIO_CONFIG['token'])
