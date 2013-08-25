@@ -500,7 +500,8 @@ h6 {
 
 h1,
 .h1 {
-  font-size: 36px;
+	font-size: 36px;
+	font-family: Constantia, "Lucida Bright", "DejaVu Serif", Georgia, serif;
 }
 
 h2,
@@ -845,10 +846,11 @@ pre code {
 .col-lg-10,
 .col-lg-11,
 .col-lg-12 {
-  position: relative;
-  min-height: 1px;
-  padding-right: 15px;
-  padding-left: 15px;
+	position: relative;
+	min-height: 1px;
+	padding-right: 15px;
+	padding-left: 15px;
+	font-family: "corbert_condensedbold";
 }
 
 .col-xs-1,
@@ -1094,7 +1096,8 @@ pre code {
     width: 25%;
   }
   .col-md-4 {
-    width: 33.33333333333333%;
+	width: 33.33333333333333%;
+	font-family: "corbert_condensedbold";
   }
   .col-md-5 {
     width: 41.66666666666667%;
@@ -2120,9 +2123,9 @@ fieldset[disabled] .btn-primary.active {
 }
 
 .btn-warning {
-  color: #ffffff;
-  background-color: #f0ad4e;
-  border-color: #eea236;
+  color: #666;
+  background-color: #ffd942;
+  border-color: #facb26;
 }
 
 .btn-warning:hover,
@@ -2130,9 +2133,9 @@ fieldset[disabled] .btn-primary.active {
 .btn-warning:active,
 .btn-warning.active,
 .open .dropdown-toggle.btn-warning {
-  color: #ffffff;
-  background-color: #ed9c28;
-  border-color: #d58512;
+  color: #333;
+  background-color: #ffcc00;
+  border-color: #facb26;
 }
 
 .btn-warning:active,

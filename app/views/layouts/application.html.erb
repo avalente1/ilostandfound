@@ -6,33 +6,66 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.png">
+
+    <title>Welcome to iLost & Found</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="assets/jumbotron.css" rel="stylesheet">
+    <link href="assets/carousel.css" rel="stylesheet">
+    <link href="assets/signin.css" rel="stylesheet">
+    <link href="assets/ilost-styles.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body>
-  <nav class="navbar navbar-default" role="navigation">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <%= link_to "iLost&Found", home_url, class: "navbar-brand" %>
-  </div>
-  <div class="collapse navbar-collapse navbar-ex1-collapse">
-    <ul class="nav navbar-nav">
-      <% if current_user.present? %>
-      <li><%= link_to "My Account", user_url(current_user) %></li>
-      <li><%= link_to "Print QR Codes", "/#{current_user.id}/print" %></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><%= link_to "Sign Out", session_url, method: "delete", class: "pull-right" %></li>
-      <% else %>
-        <li><%= link_to "Sign In", new_session_url %></li>
-        <li><%= link_to "Sign Up", new_user_url %></li>
-      <% end %>
-    </ul>
-  </div><!-- /.navbar-collapse -->
-</nav>
+<div class="navbar navbar-ilostnav navbar-fixed-top ">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">iLost & Found</a>
+        </div>
+        <div class="nav navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#newuser">New User</a></li>
+            <li><a href="#foundit">I Found It!</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Why iLost & Found? <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Security</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Rewards</a></li>
+
+              </ul>
+            </li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <div class="form-group">
+              <input type="text" placeholder="Username" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-warning">Sign in</button>
+          </form>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
 
 <%= yield %>
 
