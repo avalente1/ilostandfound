@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       redirect_to user_url(@user.id)
     else
       flash[:error] = "Something Went Wrong, Please Try Again"
-      render 'new'
+      redirect_to home_url
     end
   end
 

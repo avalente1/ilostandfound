@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
       # user.save
 
       url = Googl.shorten(user_url(user))
-      user.qr_code_uid = url.short_url[-5..-1]
+      user.qr_code_uid = url.short_url.split('/').last
       user.qrcode = "http://chart.googleapis.com/chart?cht=qr&chs=150x150&choe=UTF-8&chld=H&chl=#{url.short_url}"
       user.save
     end
