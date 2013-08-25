@@ -4,7 +4,7 @@
       <div class="mt20">
         <%= render 'flash' %>
       </div>
-      <div class='row'>
+      <div class='row userview'>
         <div class="mt20">
           <p><% if @messages.any? %>
             <% @messages.each do |message| %>
@@ -73,40 +73,43 @@
         </div>
       </div>
 
+    </div>
 
-      <div class="row multiprint_list">
+
+<div class="row multiprint_list">
         <div class="col4">
           <div class="groupprint1">
 
-          <%= image_tag @user.qrcode, class: "img_size multiprinter" %>
-          <%= image_tag @user.qrcode, class: "img_size multiprinter" %>
-          <%= image_tag @user.qrcode, class: "img_size multiprinter" %>
+          <%= image_tag @user.qrcode, class: "img_size" %>
+          <%= image_tag @user.qrcode, class: "img_size" %>
+          <%= image_tag @user.qrcode, class: "img_size" %>
         </div>
           <div class="groupprint2">
-          <%= image_tag @user.qrcode, class: "img_size multiprinter" %>
-          <%= image_tag @user.qrcode, class: "img_size multiprinter" %>
-          <%= image_tag @user.qrcode, class: "img_size multiprinter" %>
-          <%= image_tag @user.qrcode, class: "img_size multiprinter" %>
-          <%= image_tag @user.qrcode, class: "img_size multiprinter" %>
-          <%= image_tag @user.qrcode, class: "img_size multiprinter" %>
-          <%= image_tag @user.qrcode, class: "img_size multiprinter" %>
-          <%= image_tag @user.qrcode, class: "img_size multiprinter" %>
+          <%= image_tag @user.qrcode, class: "img_size" %>
+          <%= image_tag @user.qrcode, class: "img_size" %>
+          <%= image_tag @user.qrcode, class: "img_size" %>
+          <%= image_tag @user.qrcode, class: "img_size" %>
+          <%= image_tag @user.qrcode, class: "img_size" %>
+          <%= image_tag @user.qrcode, class: "img_size" %>
+          <%= image_tag @user.qrcode, class: "img_size" %>
+          <%= image_tag @user.qrcode, class: "img_size" %>
         </div>
           <div class="groupprint3">
-          <%= image_tag @user.qrcode, class: "img_size multiprinter" %>
-          <%= image_tag @user.qrcode, class: "img_size multiprinter" %>
-          <%= image_tag @user.qrcode, class: "img_size multiprinter" %>
-          <%= image_tag @user.qrcode, class: "img_size multiprinter" %>
-          <%= image_tag @user.qrcode, class: "img_size multiprinter" %>
-          <%= image_tag @user.qrcode, class: "img_size multiprinter" %>
-          <%= image_tag @user.qrcode, class: "img_size multiprinter" %>
-          <%= image_tag @user.qrcode, class: "img_size multiprinter" %>
-          <%= image_tag @user.qrcode, class: "img_size multiprinter" %>
-          <%= image_tag @user.qrcode, class: "img_size multiprinter" %>
+          <%= image_tag @user.qrcode, class: "img_size" %>
+          <%= image_tag @user.qrcode, class: "img_size" %>
+          <%= image_tag @user.qrcode, class: "img_size" %>
+          <%= image_tag @user.qrcode, class: "img_size" %>
+          <%= image_tag @user.qrcode, class: "img_size" %>
+          <%= image_tag @user.qrcode, class: "img_size" %>
+          <%= image_tag @user.qrcode, class: "img_size" %>
+          <%= image_tag @user.qrcode, class: "img_size" %>
+          <%= image_tag @user.qrcode, class: "img_size" %>
+          <%= image_tag @user.qrcode, class: "img_size" %>
           </div>
         </div>
       </div>
-    </div>
+
+
   </body>
 <% else %>
   <body id="thankspage">
