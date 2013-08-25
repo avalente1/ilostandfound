@@ -109,12 +109,22 @@
     </div>
   </body>
 <% else %>
-    <div class="welcome_text_show_page">
-    <%= "You found something belonging to: #{@user.first_name} #{@user.last_name}" %>
+  <body id="thankspage">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h1 class="thanks-heading">You Rock!</h1>
+          <h3 class="thankssubhead ml10">Looks like you found something beloning to <%= @user.first_name %></h3>
+          <p class="thankstext ml10">Fill out this form and send an anonymous message to the owner.</p>
+        </div>
+        <div class="col-md-4 pt50">
+          <%= render "form_finder"%>
+        </div>
+        <div class="col-md-3 pt25">
+          <h3 class="thanks-heading">We really appreciate it!</h3>
+          <p>Checkout these potential rewards:</p>
+        </div>
+      </div>
     </div>
-    <h5 class="margin_bottom">Please complete the form below and we will send an anonymous message to the owner.</h5>
-
-    <%= render "form_finder"%>
-
-
+  </body>
 <% end %>

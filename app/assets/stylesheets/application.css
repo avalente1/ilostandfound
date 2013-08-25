@@ -22,7 +22,7 @@
 }
 
 .test_area_size {
-  width: 400px;
+  width: 360px;
   height: 150px;
 }
 
@@ -37,11 +37,6 @@
   margin-bottom: 20px;
 }
 
-
-.test_area_size {
-  width: 400px;
-  height: 150px;
-}
 
 .welcome_text_show_page{
   margin: 30px 0px;

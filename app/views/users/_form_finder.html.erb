@@ -1,5 +1,5 @@
 
-<%= form_for(@message, class: "thankspage") do |f| %>
+<%= form_for(@message, class: "form-signin") do |f| %>
   <% if @message.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@message.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -15,13 +15,12 @@
 
     <%= fields_for(@finder) do |ff| %>
       <div class="field">
-      <%= ff.text_field :first_name, class: "form-control", placeholder:"First Name" %>
+        <%= ff.text_field :first_name, class: "form-control", placeholder:"First Name", autofocus: true %>
       </div>
       <div class="field">
         <br>
         <%= ff.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
       </div>
-
       <div class="field">
         <br>
         <%= ff.text_field :cell_number, class: "form-control", placeholder: "Cell Number" %>
@@ -34,29 +33,25 @@
         <br>
         <%= ff.password_field :password, class: "form-control", placeholder: "Enter Password" %>
       </div>
-        <div class="field">
+      <div class="field">
         <br>
         <%= ff.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password" %>
       </div>
+
     <% end %>
 
   <% end %>
-
-  <div>
+  <div class="field">
     <br>
     <%= f.text_field :subject, class: "form-control", placeholder: "Confirm Password"%>
   </div>
-
-  <div>
+  <div class="field">
     <br>
-    <%= f.text_area :text, class: "test_area_size", placeholder: "Message" %>
-  </div>
-
-  <div>
+    <%= f.text_area :text, class: "test_area_size form-control", placeholder: "Message" %>
     <%= hidden_field_tag :owner_id, @user.id %>
   </div>
-
   <div class="actions">
-    <%= f.submit %>
+    <br>
+    <%= f.button "send", class: "btn btn-lg btn-send  btn-block" %>
   </div>
 <% end %>
