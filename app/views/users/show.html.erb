@@ -23,6 +23,21 @@
       <% end %>
     <% end %></p>
 
+    <div class="row">
+      <div class="col4 col-md-offset-1">
+        <%= current_user.point_tally %>
+        <% if current_user.point_tally >= 1 %>
+          <%= image_tag("/assets/checkmark.png") %>
+          <% end %>
+        <% if current_user.point_tally >= 2 %>
+          <%= image_tag '/assets/thumbs_up.png' %>
+        <% end %>
+        <% if current_user.point_tally >= 3 %>
+          <%= image_tag '/assets/angel.png' %>
+        <% end %>
+
+  </div>
+
     <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-warning" %>
     <p>
       <strong>Name:</strong>

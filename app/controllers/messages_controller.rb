@@ -28,7 +28,6 @@ class MessagesController < ApplicationController
         session[:user_id] = @finder.id
         @message.find_id = @finder.id
         if @message.save
-          flash[:notice] = "Thank you, the owner have been notified. Now you can also use iLostAndFound"
           redirect_to user_url(current_user)
         else
         end

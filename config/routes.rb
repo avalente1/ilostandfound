@@ -6,6 +6,7 @@ Ilostandfound::Application.routes.draw do
   resources :messages
   resources :users
   resource  :verifications
+  resources :points
 
   post "users/:id/print" => "users#print", as: "print"
 
