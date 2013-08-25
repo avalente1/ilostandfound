@@ -52,16 +52,7 @@
   margin-bottom: 20px;
 }
 
-.multiprint1,
-.multiprint2,
-.multiprint3,
-.multiprint4,
-.multiprint5,
-.multiprint6,
-.multiprint7,
-.multiprint8,
-.multiprint9,
-.multiprint_s {
+.multiprinter {
   visibility: hidden;
   display: none;
 }
@@ -69,31 +60,17 @@
 .row, .btn-primary, .multiprint {display: none; visibility:hidden;}
 .multiprint_list {visibility: visible; display: inline;}
 
-.multiprint1,
-.multiprint2,
-.multiprint3,
-.multiprint4,
-.multiprint5,
-.multiprint6,
-.multiprint7,
-.multiprint8,
-.multiprint9 {
+.multiprinter {
 visibility: visible;
 display: inline;
 float: left;
-margin:20px;
+margin:10px 20px;
 }
 
-.multiprint1 {width: 200px}
-.multiprint2 {width: 150px}
-.multiprint3 {width: 100px}
-.multiprint4 {width: 200px}
-.multiprint5 {width: 150px}
-.multiprint6 {width: 100px}
-.multiprint7 {width: 200px}
-.multiprint8 {width: 150px}
-.multiprint9 {width: 100px}
-.multiprint_s {width: 70px}
+.groupprint1 .multiprinter {width: 200px}
+.groupprint2 .multiprinter {width: 130px}
+.groupprint3 .multiprinter {width: 100px}
+.groupprint4 .multiprinter {width: 75px}
 
 .groupprint {float:left;clear:both;}
 }
