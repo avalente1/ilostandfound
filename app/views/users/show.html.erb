@@ -94,6 +94,7 @@
     <%= link_to 'Show me delivery options', test_url, class: "btn btn-primary" %>
   </div>
 </div>
+<%= @messages %>
 
   <% else %>
       <div class="welcome_text_show_page">
@@ -110,7 +111,6 @@
       <% if @user.home_phone_show %>
         <%= @user.home_phone %>
       <% end %>
-
 
       <%= render "form_finder"%>
 

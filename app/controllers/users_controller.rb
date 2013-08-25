@@ -21,9 +21,11 @@ class UsersController < ApplicationController
     @url = user_url(@user)
     @finder = User.new
     @message = Message.new
-    @messages = Message.where(owner_id: current_user.id)
-    # @user.ip_address = request.location
-    # @user.save
+    if current_user.present?
+      @messages = Message.where(owner_id: current_user.id)
+    end
+    @user.ip_address = request.location
+    @user.save
   end
 
   def new
