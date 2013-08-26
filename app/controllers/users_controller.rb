@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     puts @user.first_name
     if @user.save
-      puts @user.first_name
+      puts User.find_by(@user.id).first_name
       create_qrcode(@user)
       session[:user_id] = @user.id
 
