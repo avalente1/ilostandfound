@@ -5,7 +5,7 @@
 
 background: -moz-radial-gradient(center, ellipse cover,  #ffffff 0%, #4ab9d4 98%);
 
-background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#ffffff), color-stop(98%,#4ab9d4)); 
+background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#ffffff), color-stop(98%,#4ab9d4));
 
 background: -webkit-radial-gradient(center, ellipse cover,  #ffffff 0%,#4ab9d4 98%); /* Chrome10+,Safari5.1+ */
 
@@ -18,14 +18,13 @@ background: radial-gradient(ellipse at center,  #ffffff 0%,#4ab9d4 98%); /* W3C 
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#4ab9d4',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
 background-repeat:no-repeat;
-  
+
 }
 
-
-
-
-
-
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
 
 .form-signin {
   max-width: 400px;

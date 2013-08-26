@@ -12,7 +12,6 @@
  *= require_tree .
  *= require bootstrap.min
  *= require carousel
- *= require jumbotron
  *= require signin
  *= require ilost-styles
  */
