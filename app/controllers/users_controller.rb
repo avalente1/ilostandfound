@@ -5,7 +5,6 @@ class UsersController < ApplicationController
 
   def home
   end
-
   def show
     @url = user_url(@user)
     @finder = User.new
@@ -29,41 +28,32 @@ class UsersController < ApplicationController
     if @user.save
       create_qrcode(@user)
       session[:user_id] = @user.id
-      redirect_to(@user, :notice => 'User created')
+      redirect_to(@user, :notice => 'Successfully created your acconut.  Here is your unique QR code to print and place on valuables!')
     else
       render :new
     end
   end
 
   def update
-    respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'Your profile has been sucessfully updated.' }
-        format.json { head :no_content }
+        redirect_to @user, notice: 'Your profile has been sucessfully updated.'
       else
-        format.html { render action: 'edit' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+        render action: 'edit'
       end
     end
 
   def destroy
     @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url }
-      format.json { head :no_content }
-    end
+    redirect_to user_url
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :cell_number, :email, :password, :password_confirmation, :qrcode, :ip_address)
+      params.require(:user).permit(:first_name, :last_name, :cell_number, :email, :password, :password_confirmation, :qrcode, :ip_address, :latitude, :longitude)
     end
 
   end
