@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   # validates :last_name, presence: true
   # validates :cell_number, presence: true
   # validates :email, presence: true, uniqueness: true
-  attr_accessor :first_name
+  # attr_accessor :first_name
   # :ip_address, :latitude, :longitude
   # geocoded_by :ip_address
   # after_validation :geocode
