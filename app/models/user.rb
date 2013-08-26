@@ -8,6 +8,23 @@ class User < ActiveRecord::Base
   # geocoded_by :ip_address
   # after_validation :geocode
 
+  after_create :twilio_sign_up
+  after_create :email_sign_up
+
+  def twilio_sign_up
+    client = Twilio::REST::Client.new(TWILIO_CONFIG['sid'], TWILIO_CONFIG['token'])
+    client.account.sms.messages.create(
+      from: TWILIO_CONFIG['from'],
+      to: self.cell_number,
+      body: "Thanks for signing up. To verify your account, please reply HELLO to this message.")
+  end
+
+  def email_sign_up
+    Notifier.signup_email(self).deliver
+  end
+
+  #Wedeliver.wedeliver_email(self).deliver
+
   # before_save :default_password
 
   # def default_password

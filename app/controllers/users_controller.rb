@@ -1,20 +1,9 @@
-require 'rqrcode'
 require 'open-uri'
 require 'twilio-ruby'
-require 'rqrcode_png'
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def home
-  end
-
-  def find
-    @owner = User.find_by(id: params[:qr_id])
-    redirect_to user_url(@owner)
-  end
-
-  def print
-    @size = params[:size]
   end
 
   def show
@@ -24,8 +13,8 @@ class UsersController < ApplicationController
     if current_user.present?
       @messages = Message.where(owner_id: current_user.id)
     end
-    @user.ip_address = request.ip
-    @user.save
+    # @user.ip_address = request.ip
+    # @user.save
   end
 
   def new
@@ -37,21 +26,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    puts @user.first_name
     if @user.save
-      puts User.find_by(id: @user.id).first_name
       create_qrcode(@user)
       session[:user_id] = @user.id
-
-      client = Twilio::REST::Client.new(TWILIO_CONFIG['sid'], TWILIO_CONFIG['token'])
-
-      client.account.sms.messages.create(
-        from: TWILIO_CONFIG['from'],
-        to: @user.cell_number,
-        body: "Thanks for signing up. To verify your account, please reply HELLO to this message."
-      )
-      Notifier.signup_email(@user).deliver
-      Wedeliver.wedeliver_email(@user).deliver
       redirect_to(@user, :notice => 'User created')
     else
       render :new
