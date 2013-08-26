@@ -37,7 +37,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    puts @user.first_name
     if @user.save
+      puts @user.first_name
       create_qrcode(@user)
       session[:user_id] = @user.id
 

@@ -4,7 +4,7 @@ class Wedeliver < ActionMailer::Base
   # send a signup email to the user, pass in the user object that contains the user's email address
 
   def wedeliver_email(user)
-    james = "jruffer@gmail.com"
+    james = "a@gmail.com"
     mail( :to => james,
     :subject => 'Please call me for delivery' )
   end
