@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   # geocoded_by :ip_address
   # after_validation :geocode
 
-  after_create :twilio_sign_up
+  # after_create :twilio_sign_up
   after_create :email_sign_up
 
   def twilio_sign_up
