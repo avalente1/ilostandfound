@@ -21,6 +21,14 @@ background-repeat:no-repeat;
 
 }
 
+.tagline {
+  color: white;
+}
+
+.signup {
+  color: black;
+}
+
 body {
   padding-top: 50px;
   padding-bottom: 20px;

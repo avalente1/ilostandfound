@@ -10,8 +10,6 @@ gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
-gem 'rqrcode'
-
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
@@ -45,12 +43,9 @@ gem 'rails_12factor', group: :production
 gem 'sendgrid'
 gem 'rack-cache', :require => 'rack/cache'
 gem 'dragonfly', '~>0.9.15'
-gem 'rqrcode_png'
 gem 'geocoder'
 gem 's3'
-
 gem 'googl'
-gem 'aws-sdk'
 
 # Use unicorn as the app server
 # gem 'unicorn'
