@@ -22,9 +22,6 @@ class MessagesController < ApplicationController
           # @user.ip_address = request.ip
           # @user.save
           redirect_to user_url(current_user)
-        else
-        end
-      else
       end
     end
   end
