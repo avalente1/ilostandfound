@@ -62,7 +62,9 @@ text-decoration: none;
 
 
 @media print {
-.userview {display: none; visibility:hidden;}
+.userview,
+.alert
+{display: none; visibility:hidden;}
 .row.multiprint_list {visibility: visible !important;
 visibility: visible;
 display: inline;
