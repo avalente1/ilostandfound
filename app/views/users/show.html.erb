@@ -53,13 +53,13 @@
             </div>
             <div class="col-xs-4 col-sm-4 col-md-4">
               <% if current_user.point_tally >= 1 %>
-                <%= image_tag "/assets/checkmark.png", class: "badge_img pull-right" %>
+                <%= image_tag "https://s3-us-west-2.amazonaws.com/ilostandfound/checkmark.png", class: "badge_img pull-right" %>
                 <% end %>
               <% if current_user.point_tally >= 2 %>
-                <%= image_tag '/assets/thumbs_up.png', class: "badge_img pull-right" %>
+                <%= image_tag 'https://s3-us-west-2.amazonaws.com/ilostandfound/thumbs_up.png', class: "badge_img pull-right" %>
               <% end %>
               <% if current_user.point_tally >= 3 %>
-                <%= image_tag '/assets/angel.png', class: "badge_img pull-right" %>
+                <%= image_tag assest_path('angel.png'), class: "badge_img pull-right" %>
               <% end %>
             </div>
         </div>
