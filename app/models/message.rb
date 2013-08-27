@@ -17,7 +17,7 @@ class Message < ActiveRecord::Base
     client.account.sms.messages.create(
       from: TWILIO_CONFIG['from'],
       to: User.find_by(id: self.owner_id).cell_number,
-      body: "Someone has found your #{@message.subject}")
+      body: "Someone has found your #{self.subject}")
   end
   # def email_lead_to_wedeliver
   #   Wedeliver.wedeliver_email(@user).deliver
