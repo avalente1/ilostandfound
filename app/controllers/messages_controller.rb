@@ -17,13 +17,7 @@ class MessagesController < ApplicationController
         create_qrcode(@finder)
         session[:user_id] = @finder.id
         @message.find_id = @finder.id
-        if @message.save
-          client = Twilio::REST::Client.new(TWILIO_CONFIG['sid'], TWILIO_CONFIG['token'])
-          client.account.sms.messages.create(
-          from: TWILIO_CONFIG['from'],
-          to: User.find_by(id: @message.owner_id).cell_number,
-          body: "Someone has found your #{@message.subject}")
-          Wedeliver.wedeliver_email(@user).deliver
+        @message.save
           flash[:notice] = "Thank you, the owner have been notified. Now you can also use iLostAndFound"
           # @user.ip_address = request.ip
           # @user.save

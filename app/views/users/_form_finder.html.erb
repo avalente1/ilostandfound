@@ -1,9 +1,7 @@
-
 <%= form_for(@message, class: "form-signin") do |f| %>
   <% if @message.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@message.errors.count, "error") %> prohibited this user from being saved:</h2>
-
       <ul>
       <% @message.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -12,7 +10,6 @@
     </div>
   <% end %>
   <% unless current_user.present? %>
-
     <%= fields_for(@finder) do |ff| %>
       <div class="field">
         <%= ff.text_field :first_name, class: "form-control", placeholder:"First Name", autofocus: true %>
@@ -29,8 +26,6 @@
         <br>
         <%= ff.text_field :email, class: "form-control", placeholder: "Email" %>
       </div>
-
-
     <% end %>
 
   <% end %>

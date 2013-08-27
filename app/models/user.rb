@@ -1,13 +1,12 @@
 class User < ActiveRecord::Base
   has_secure_password
   has_many :messages
-  # validates :first_name, presence: true
-  # validates :last_name, presence: true
-  # validates :cell_number, presence: true
-  # validates :email, presence: true, uniqueness: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :cell_number, presence: true
+  validates :email, presence: true, uniqueness: true
   # geocoded_by :ip_address
   # after_validation :geocode
-
   # after_create :twilio_sign_up
   after_create :email_sign_up
 
