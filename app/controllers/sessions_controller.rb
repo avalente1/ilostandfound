@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       flash[:notice] = "Welcome back, #{current_user.first_name}"
       redirect_to user_url(@user.id)
     else
-      flash[:error] = "Something Went Wrong, Please Try Again"
+      flash[:error] = "Email and password combination do not match. Please try again!"
       redirect_to home_url
     end
   end

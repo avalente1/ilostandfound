@@ -1,16 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :set_message, only: [:show, :edit, :update, :destroy]
-
-  def show
-  end
-
-  def new
-    @message = Message.new
-  end
-
-  def edit
-  end
-
+  before_action :set_message, only: [:update, :destroy]
   def create
     @message = Message.new(message_params)
     @message.owner_id = params[:owner_id]
@@ -36,12 +25,17 @@ class MessagesController < ApplicationController
           body: "Someone has found your #{@message.subject}")
           Wedeliver.wedeliver_email(@user).deliver
           flash[:notice] = "Thank you, the owner have been notified. Now you can also use iLostAndFound"
+          # @user.ip_address = request.ip
+          # @user.save
           redirect_to user_url(current_user)
         else
         end
       else
       end
     end
+  end
+
+  def update
   end
 
   def destroy
@@ -54,7 +48,7 @@ class MessagesController < ApplicationController
       @message = Message.find(params[:id])
     end
     def message_params
-      params.require(:message).permit(:find_id, :owner_id, :text, :subject)
+      params.require(:message).permit(:find_id, :owner_id, :text, :subject, :current, :ip_address, :longitude, :latitude)
     end
     def finder_params
       params.require(:user).permit(:first_name, :last_name, :cell_number, :email, :password, :password_confirmation, :ip_address)

@@ -63,7 +63,6 @@
                 <%= image_tag '/assets/angel.png', class: "badge_img pull-right" %>
               <% end %>
             </div>
-
         </div>
       <div class="row mt20 ml10">
         <div class="col-xs-4 col-sm-4 col-md-4">
@@ -72,9 +71,7 @@
           </div>
         </div>
       </div>
-
     </div>
-
 
 <div class="row multiprint_list">
         <div class="col4">
@@ -108,8 +105,6 @@
           </div>
         </div>
       </div>
-
-
   </body>
 <% else %>
   <body id="thankspage">
@@ -118,7 +113,7 @@
         <div class="col-md-4">
           <h1 class="thanks-heading">You Rock!</h1>
           <h3 class="thankssubhead ml10">Looks like you found something that belongs to <%= @user.first_name %></h3>
-          <p class="thankstext ml10">Fill out this form and send an anonymous message to the owner, or contact him directly:</p>
+          <p class="thankstext ml10">Fill out this form and send a message to the owner, or contact him directly:</p>
           <p class="thankstext ml10"><strong>Name:</strong><%= " #{@user.first_name} #{@user.last_name}" %></p>
           <p class="thankstext ml10"><strong>Email: </strong><%= mail_to @user.email %></p>
           <p class="thankstext ml10"><strong>Cell: </strong><%= "(#{@user.cell_number[0..2]}) #{@user.cell_number[3..5]}-#{@user.cell_number[6..9]}" %></p>
@@ -126,16 +121,16 @@
         <div class="col-md-4 pt50">
           <%= render "form_finder"%>
         </div>
-        <div class="col-md-3 pt25">
-          <h3 class="thanks-heading">We really appreciate it!</h3>
-          <p>Checkout these potential rewards:</p>
-            <div class="row mb20 img_pos">
+        <div class="col-md-4 pt25">
+          <h3 class="thanks-heading ml20">We really appreciate it!</h3>
+          <p class= "ml20">Checkout these potential rewards:</p>
+            <div class="row mb20 img_pos ml20">
             <%= image_tag "/assets/checkmark.png", class: "badge_img" %>
             </div>
-            <div class="row mb20 img_pos">
+            <div class="row mb20 img_pos ml20">
                 <%= image_tag '/assets/thumbs_up.png', class: "badge_img" %>
             </div>
-            <div class="row mb20 img_pos">
+            <div class="row mb20 img_pos ml20">
                 <%= image_tag '/assets/angel.png', class: "badge_img" %>
             </div>
           </div>
