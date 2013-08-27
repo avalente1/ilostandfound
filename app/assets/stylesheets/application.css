@@ -17,7 +17,7 @@
  */
 
 .img_size {
-  width: 200px;
+  width: 200px;clip:rect(20px,180px,180px,20px);
 }
 
 .test_area_size {
@@ -69,12 +69,20 @@ text-decoration: none;
 visibility: visible;
 display: inline;
 float: left;
-margin:5px 20px;
+margin:0 20px;
 }
+body {margin:-18px 0 0 0;padding: 0;text-align: center; }
+.groupprint1 .code {width: 220px;border: 1px solid gray;padding:2px;margin:0 0 3px 0;background: red;float: left;overflow: hidden;}
+.groupprint1 .code p {font-size: .8em;line-height:1;padding:0 20px 0 20px;margin-top: -15px;z-index: 100}
+.groupprint1 .code img {}
 
-.groupprint1 img {width: 200px}
-.groupprint2 img {width: 150px}
-.groupprint3 img {width: 120px}
+.groupprint2 .code {width: 165px;border: 1px solid gray;padding:2px;margin:0 0 3px 0;background: red;float: left;overflow: hidden;}
+.groupprint2 .code p {font-size: .6em;line-height:1;padding:0 17px;margin-top: -12px;}
+.groupprint2 .code img {width: 150px;}
+
+.groupprint3 .code {text-align:center;width: 150px;border: 1px solid gray;padding:2px;margin:0 0 3px 0;background: red;float: left;overflow: hidden;}
+.groupprint3 .code p {font-size: .6em;line-height:1;padding:0 26px;text-align: left;margin-top: -8px;}
+.groupprint3 .code img {width: 120px;}
 
 .groupprint {float:left;clear:both;}
 }
