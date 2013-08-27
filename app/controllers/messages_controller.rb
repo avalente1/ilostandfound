@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
     if current_user.present?
       @message.find_id = current_user.id
       if @message.save
-        flash[:notice] = "Thank you, the owner have been notified. Now you can also use iLostAndFound"
+        flash[:notice] = "Thank you! The owner has been notified."
         redirect_to user_url(current_user)
       end
     else
@@ -18,7 +18,7 @@ class MessagesController < ApplicationController
         session[:user_id] = @finder.id
         @message.find_id = @finder.id
         @message.save
-          flash[:notice] = "Thank you, the owner have been notified. Now you can also use iLostAndFound"
+          flash[:notice] = "Thank you! The owner has been notified. Now you can also use iLostAndFound to protect your valuables.  Thanks for paying it forward!"
           # @user.ip_address = request.ip
           # @user.save
           redirect_to user_url(current_user)
