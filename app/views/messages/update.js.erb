@@ -1,2 +1,4 @@
 $('#myModal').modal('hide');
 $('#message_<%= @page_id %>').slideUp();
+$('.hidden_message').first().toggleClass('hidden_message').slideDown();
+$('.badge').html('<%= @message_count %>');
