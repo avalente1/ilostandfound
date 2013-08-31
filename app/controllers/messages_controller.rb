@@ -18,10 +18,10 @@ class MessagesController < ApplicationController
         session[:user_id] = @finder.id
         @message.find_id = @finder.id
         @message.save
-          flash[:notice] = "Thank you! The owner has been notified. Now you can also use iLostAndFound to protect your valuables.  Thanks for paying it forward!"
-          # @user.ip_address = request.ip
-          # @user.save
-          redirect_to user_url(current_user)
+        flash[:notice] = "Thank you! The owner has been notified. Now you can also use iLostAndFound to protect your valuables.  Thanks for paying it forward!"
+        # @user.ip_address = request.ip
+        # @user.save
+        redirect_to user_url(current_user)
       end
     end
   end
