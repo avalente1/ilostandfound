@@ -68,3 +68,8 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+.badge {
+  background-color: #4ab9d4;
+  font-size: 16px;
+}

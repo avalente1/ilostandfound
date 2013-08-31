@@ -1,4 +1,10 @@
 class Message < ActiveRecord::Base
+
+  validates :subject, presence: true
+  validates :text, presence: true
+  validates :find_id, presence: true
+  validates :owner_id, presence: true
+
   belongs_to :owner, class_name: 'User'
   belongs_to :find, class_name: 'User'
 

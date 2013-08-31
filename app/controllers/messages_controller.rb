@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :set_message, only: [:update, :destroy]
+  before_action :set_message, only: [:show, :update, :destroy]
   def create
     @message = Message.new(message_params)
     @message.owner_id = params[:owner_id]
@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
       @message.find_id = current_user.id
       if @message.save
         Message.delay.twilio_lost_item_notification(@message.id)
-        Message.email_lost_item_notification(@message.id)
+        Message.delay.email_lost_item_notification(@message.id)
         flash[:notice] = "Thank you! The owner has been notified."
         redirect_to user_url(current_user)
       end
@@ -32,6 +32,19 @@ class MessagesController < ApplicationController
   end
 
   def update
+  end
+
+  def show
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def index
+    @messages = Message.where(owner_id: current_user.id).order("id desc").offset(6)
+    respond_to do |format|
+      format.js
+    end
   end
 
   def destroy

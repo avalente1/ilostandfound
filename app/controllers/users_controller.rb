@@ -4,13 +4,20 @@ class UsersController < ApplicationController
 
   def home
   end
+
   def show
-    @url = user_url(@user)
-    @finder = User.new
-    @message = Message.new
-    if current_user.present?
-      @messages = Message.where(owner_id: current_user.id)
+    if current_user.present? && current_user == @user
+      messages = Message.where(owner_id: current_user.id)
+      @messages_count = messages.count
+      @messages = messages.order("id desc")
+      render 'profile'
+    else
+      @finder = User.new
+      @message = Message.new
+      render 'show'
     end
+    # @url = user_url(@user)
+
   end
 
   def new
@@ -56,8 +63,8 @@ class UsersController < ApplicationController
 
   end
 
-  # redo show page - break up in controller
-  # delayed jobs
+
+
   # profile page
   # javascript
   # TODO geolocation

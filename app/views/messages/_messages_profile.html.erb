@@ -1,0 +1,3 @@
+<% messages.each_with_index do |message, i| %>
+  <li class='list-group-item' id ='<%= "message_#{i}" %>'><%= link_to "<i class='icon-envelope'></i> #{message.subject}".html_safe, message_url(message.id), remote: true, class: "model" %></li>
+<% end %>
