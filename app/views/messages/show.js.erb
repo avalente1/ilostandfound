@@ -1,2 +1,2 @@
-$('#myModal').replaceWith('<%= j( render 'users/model_profile', message: @message) %>');
+$('#myModal').replaceWith('<%= j( render 'users/model_profile', message: @message, page_id: @page_id) %>');
 $('#myModal').modal();

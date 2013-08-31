@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def show
     if current_user.present? && current_user == @user
-      messages = Message.where(owner_id: current_user.id)
+      messages = Message.where(owner_id: current_user.id, complete: false)
       @messages_count = messages.count
       @messages = messages.order("id desc")
       render 'profile'

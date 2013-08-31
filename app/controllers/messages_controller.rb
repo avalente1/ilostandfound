@@ -32,18 +32,22 @@ class MessagesController < ApplicationController
   end
 
   def update
-  end
-
-  def show
-    respond_to do |format|
-      format.js
+    if current_user == @message.owner
+      @page_id = params[:page_id]
+      @message.complete = true
+      @message.save
+      respond_to do |format|
+          format.js
+      end
     end
   end
 
-  def index
-    @messages = Message.where(owner_id: current_user.id).order("id desc").offset(6)
-    respond_to do |format|
-      format.js
+  def show
+    if current_user == @message.owner
+      @page_id = params[:page_id]
+      respond_to do |format|
+        format.js
+      end
     end
   end
 

@@ -73,3 +73,13 @@ body {
   background-color: #4ab9d4;
   font-size: 16px;
 }
+
+.modal-footer i {
+  font-size: 35px;
+  margin-right: 10px;
+}
+
+.margin_model {
+  margin-top: -18px;
+}
+
