@@ -6,8 +6,10 @@ class MessagesController < ApplicationController
     if current_user.present?
       @message.find_id = current_user.id
       if @message.save
-        Message.delay.twilio_lost_item_notification(@message.id)
-        Message.delay.email_lost_item_notification(@message.id)
+        Message.twilio_lost_item_notification(@message.id)
+        # Message.delay.twilio_lost_item_notification(@message.id)
+        Message.email_lost_item_notification(@message.id)
+        # Message.delay.email_lost_item_notification(@message.id)
         flash[:notice] = "Thank you! The owner has been notified."
         redirect_to user_url(current_user)
       end
@@ -16,13 +18,16 @@ class MessagesController < ApplicationController
       @finder.password = @finder.first_name.downcase
       @finder.password_confirmation = @finder.first_name.downcase
       if @finder.save
-        User.delay.email_sign_up(@finder.id)
+        User.email_sign_up(@finder.id)
+        # User.delay.email_sign_up(@finder.id)
         create_qrcode(@finder)
         session[:user_id] = @finder.id
         @message.find_id = @finder.id
         @message.save
-        Message.delay.twilio_lost_item_notification(@message.id)
-        Message.delay.email_lost_item_notification(@message.id)
+        Message.twilio_lost_item_notification(@message.id)
+        # Message.delay.twilio_lost_item_notification(@message.id)
+        Message.email_lost_item_notification(@message.id)
+        # Message.delay.email_lost_item_notification(@message.id)
         flash[:notice] = "Thank you! The owner has been notified. Now you can also use iLostAndFound to protect your valuables.  Thanks for paying it forward!"
         # @user.ip_address = request.ip
         # @user.save
