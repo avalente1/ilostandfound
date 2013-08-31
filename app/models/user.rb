@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   # after_validation :geocode
   # after_create :twilio_sign_up
   # html5 geolocation api - get this back in JS, post back to app
-  after_create :email_sign_up
+  # after_create :email_sign_up
 
   def twilio_sign_up
     client = Twilio::REST::Client.new(TWILIO_CONFIG['sid'], TWILIO_CONFIG['token'])
@@ -17,6 +17,10 @@ class User < ActiveRecord::Base
       from: TWILIO_CONFIG['from'],
       to: self.cell_number,
       body: "Thanks for signing up. To verify your account, please reply HELLO to this message.")
+  end
+
+  def self.email_sign_up(id)
+    find(id).email_sign_up
   end
 
   def email_sign_up

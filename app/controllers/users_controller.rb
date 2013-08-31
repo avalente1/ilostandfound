@@ -25,6 +25,7 @@ class UsersController < ApplicationController
     if @user.save
       create_qrcode(@user)
       session[:user_id] = @user.id
+      User.delay.email_sign_up(@user.id)
       redirect_to(@user, :notice => 'Successfully created your acconut.  Here is your unique QR code to print and place on valuables!')
     else
       render :new
@@ -58,6 +59,7 @@ class UsersController < ApplicationController
   # redo show page - break up in controller
   # delayed jobs
   # profile page
+  # javascript
   # TODO geolocation
   # cooler qrcodes
   # payments

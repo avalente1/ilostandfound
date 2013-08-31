@@ -46,6 +46,8 @@ gem 'dragonfly', '~>0.9.15'
 gem 'geocoder'
 gem 's3'
 gem 'googl'
+gem 'delayed_job_active_record'
+gem "delayed_job_web"
 
 # Use unicorn as the app server
 # gem 'unicorn'

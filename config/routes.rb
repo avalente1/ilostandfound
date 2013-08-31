@@ -17,6 +17,8 @@ Ilostandfound::Application.routes.draw do
   get "/delivery" => "users#delivery", as: "delivery"
   get "/test" => "users#test", as: "test"
 
+  get "/delayed_job" => DelayedJobWeb, :anchor => false
+
 end
 
 
