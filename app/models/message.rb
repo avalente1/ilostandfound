@@ -1,15 +1,19 @@
 class Message < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :finder, class_name: 'User'
+  belongs_to :owner, class_name: 'User'
+  belongs_to :find, class_name: 'User'
 
   after_create :add_point
-  after_create :twilio_lost_item_notification
+  # after_create :twilio_lost_item_notification
   # after_create :email_lead_to_wedeliver
 
   def add_point
     @point = Point.new
     @point.user_id = self.find_id
     @point.save
+  end
+
+  def self.twilio_lost_item_notification(id)
+    find(id).twilio_lost_item_notification
   end
 
   def twilio_lost_item_notification
@@ -19,6 +23,15 @@ class Message < ActiveRecord::Base
       to: User.find_by(id: self.owner_id).cell_number,
       body: "Someone has found your #{self.subject}")
   end
+
+  def self.email_lost_item_notification(id)
+    find(id).email_lost_item_notification
+  end
+
+  def email_lost_item_notification
+    Notifier.signup_email(self.owner).deliver
+  end
+
   # def email_lead_to_wedeliver
   #   Wedeliver.wedeliver_email(@user).deliver
   # end
