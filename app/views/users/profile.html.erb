@@ -66,15 +66,9 @@
             <h4>Badges</h4>
           </div>
           <div class="panel-body text-center">
-            <% if current_user.point_tally >= 1 %>
-              <%= image_tag "https://s3-us-west-2.amazonaws.com/ilostandfound/checkmark.png", class: "badge_img mt10" %>
-              <% end %>
-            <% if current_user.point_tally >= 2 %>
-              <%= image_tag 'https://s3-us-west-2.amazonaws.com/ilostandfound/thumbs_up.png', class: "badge_img mt10" %>
-            <% end %>
-            <% if current_user.point_tally >= 3 %>
-              <%= image_tag asset_path('angel.png'), class: "badge_img mt10" %>
-            <% end %>
+              <%= image_tag asset_path('checkmark.png'), class: "badge_img mt10", id: "checkmark", title: "After returning one item you get a checkmark badge" %>
+              <%= image_tag asset_path('thumbs_up.png'), class: "badge_img mt10", id: "thumbs_up", title: "After returning two item you get a thumbs up badge"  %>
+              <%= image_tag asset_path('angel.png'), class: "badge_img mt10", id: "angel", title: "After returning one item you get a angel badge"  %>
           </div>
         </div>
       </div>
@@ -91,6 +85,18 @@
         $('#message_' + i).slideToggle();
       }
     });
+
+    if(<%= current_user.point_tally %> >= 1) {
+      $('#checkmark').fadeTo(0,1);
+    }
+
+    if(<%= current_user.point_tally %> >= 1) {
+      $('#thumbs_up').fadeTo(0,1);
+    }
+
+    if(<%= current_user.point_tally %> >= 1) {
+      $('#angel').fadeTo(0,1);
+    }
 
   </script>
 </body>
