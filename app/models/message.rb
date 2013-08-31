@@ -29,7 +29,7 @@ class Message < ActiveRecord::Base
   end
 
   def email_lost_item_notification
-    Notifier.signup_email(self.owner).deliver
+    Notifier.found_item_to_owner_email(self).deliver
   end
 
   # def email_lead_to_wedeliver
