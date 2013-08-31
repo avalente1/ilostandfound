@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   # geocoded_by :ip_address
   # after_validation :geocode
   # after_create :twilio_sign_up
+  # html5 geolocation api - get this back in JS, post back to app
   after_create :email_sign_up
 
   def twilio_sign_up

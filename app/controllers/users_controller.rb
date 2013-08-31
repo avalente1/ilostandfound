@@ -54,3 +54,18 @@ class UsersController < ApplicationController
     end
 
   end
+
+  # redo show page - break up in controller
+  # delayed jobs
+  # profile page
+  # TODO geolocation
+  # cooler qrcodes
+  # payments
+  # priettier emails
+  # annomoius email
+  # fedex /wedeliver
+  # get stickers printer - api stickermuel
+  # lose a phone experiement
+
+
+

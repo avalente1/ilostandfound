@@ -16,5 +16,5 @@ class ApplicationController < ActionController::Base
     end
   end
   helper_method :current_user
-  helper_method :create_qrcode
+  # helper_method :create_qrcode
 end
