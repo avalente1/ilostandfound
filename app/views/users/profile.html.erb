@@ -8,7 +8,7 @@
         <div class="col-xs-12 col-sm-6 col-md-3 mt10">
           <div class="panel panel-info show0">
             <div class="panel-heading">
-              <h3 class="mt0 pt5">Messages:<span class="badge pull-right"><%= @messages_count %></span></h3>
+              <h3 class="mt0 pt5"><i class='icon-envelope'></i> Messages<span class="badge pull-right"><%= @messages_count %></span></h3>
             </div>
             <div class="panel-body">
               <ul class="list-group mt0">
@@ -21,51 +21,61 @@
                   </script>
                 </div>
               </ul>
-                <%= link_to 'show/hide all', '#', remote: true, class: "btn btn-sm btn-primary pull-right mt15", id: "showhide", title: "Mark as complete" %>
+                <%= link_to '<i class="icon-chevron-sign-down"></i> Show All'.html_safe, '#', remote: true, class: "btn btn-sm btn-primary pull-right mt15 hide2", id: "showhide", title: "Mark as complete" %>
             </div>
           </div>
         <% end %>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-3 mt10">
-        <div class="thumbnail">
-          <%= image_tag @user.qrcode, class: "img_size" %>
-          <div class="text-center">
-            <%= link_to_function("Print QR Codes", "javascript:print()", class: "btn btn-primary mb10") %><br>
-            <%= link_to 'View Stats', "http://goo.gl/#analytics/goo.gl/#{@user.qr_code_uid}/all_time", target: "_blank", class: "btn btn-success mb10" %>
+        <div class="panel panel-warning">
+          <div class="panel-heading">
+            <h3 class="mt0 pt5"><i class="icon-qrcode"></i> QR Code</h3>
+          </div>
+          <div class="panel-body pt0 pb2">
+            <div class="text-center">
+              <%= image_tag @user.qrcode, class: "img_size" %><br>
+              <%= link_to_function('<i class="icon-print"></i> Print QR Code'.html_safe, "javascript:print()", class: "btn btn-primary mb10") %><br>
+              <%= link_to '<i class="icon-signal"></i> View Stats'.html_safe, "http://goo.gl/#analytics/goo.gl/#{@user.qr_code_uid}/all_time", target: "_blank", class: "btn btn-success mb10" %>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="col-xs-12 col-sm-6 col-md-3 mt10">
-        <ul class="list-group">
-          <li class="list-group-item active">
-            <strong>Name:</strong>
-            <%= "#{@user.first_name} #{@user.last_name}" %>
-          </li>
-          <li class="list-group-item">
-            <strong>Cell number:</strong>
-            <%= @user.cell_number %>
-          </li>
-          <li class="list-group-item">
-            <strong>Email</strong>
-            <%= @user.email %>
-          </li>
-          <li class="list-group-item">
-            <strong>Points:</strong>
-            <%= current_user.point_tally %>
-          </li>
-          <li class="list-group-item">
-            <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-danger" %>
-          </li>
-        </ul>
+        <div class='panel panel-danger'>
+            <div class="panel-heading">
+              <h3 class="mt0 pt5"><i class="icon-user"></i> Profile</h3>
+            </div>
+            <div class="panel-body">
+              <ul class="list-group mt0">
+                <li class="list-group-item">
+                  <strong>Name:</strong>
+                  <%= "#{@user.first_name} #{@user.last_name}" %>
+                </li>
+                <li class="list-group-item">
+                  <strong>Cell number:</strong>
+                  <%= @user.cell_number %>
+                </li>
+                <li class="list-group-item">
+                  <strong>Email</strong>
+                  <%= @user.email %>
+                </li>
+                <li class="list-group-item">
+                  <strong>Points:</strong>
+                  <%= current_user.point_tally %>
+                </li>
+              </ul>
+                  <%= link_to '<i class="icon-edit-sign"></i> Edit'.html_safe, edit_user_path(@user), class: "btn btn-danger btn-sm pull-right mt15" %>
+            </div>
+        </div>
 
       </div>
       <div class="col-xs-12 col-sm-6 col-md-3 mt10">
        <div class="panel panel-success">
           <div class="panel-heading">
-            <h3 class="mt0 pt5">Badges</h3>
+            <h3 class="mt0 pt5"><i class="icon-trophy"></i> Badges</h3>
           </div>
-          <div class="panel-body text-center">
+          <div class="panel-body text-center ptpb30">
               <%= image_tag asset_path('checkmark.png'), class: "badge_img mt10", id: "checkmark", title: "After returning one item you get a checkmark badge" %>
               <%= image_tag asset_path('thumbs_up.png'), class: "badge_img mt10", id: "thumbs_up", title: "After returning two item you get a thumbs up badge"  %>
               <%= image_tag asset_path('angel.png'), class: "badge_img mt10", id: "angel", title: "After returning one item you get a angel badge"  %>
@@ -84,6 +94,14 @@
     $('#showhide').on("click", function(){
       for(var i = n; i < <%= @messages_count %>; i++ ){
         $('#message_' + i).slideToggle();
+      }
+      if( $('#showhide').hasClass('hide2')){
+        $('#showhide').toggleClass('hide2');
+        $('#showhide').html('<%= j('<i class="icon-chevron-sign-up"></i> Hide'.html_safe) %>');
+      }
+      else {
+        $('#showhide').toggleClass('hide2');
+        $('#showhide').html('<%= j('<i class="icon-chevron-sign-down"></i> Show All'.html_safe) %>');
       }
     });
 
