@@ -75,9 +75,15 @@ body {
 }
 
 .modal-footer i {
-  font-size: 35px;
+  font-size: 15px;
+  padding-top: 100px;
+}
+
+.modal-footer a {
   margin-right: 10px;
 }
+
+
 
 .margin_model {
   margin-top: -18px;

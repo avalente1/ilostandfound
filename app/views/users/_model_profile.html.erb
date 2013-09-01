@@ -26,7 +26,7 @@
         </div>
         <div class="modal-footer margin_model">
           <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close Window</button>
-          <%= link_to '<i class="icon-check-sign"></i>'.html_safe, message_url(message, page_id: page_id), method: :patch, remote: true, class: "pull-right", title: "Mark as complete" %>
+          <%= link_to 'Complete <i class="icon-check"></i>'.html_safe, message_url(message, page_id: page_id), method: :patch, remote: true, class: "btn btn-primary pt4and4 pull-right", title: "Mark as complete" %>
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
