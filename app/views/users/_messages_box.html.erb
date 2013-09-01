@@ -1,0 +1,24 @@
+
+  <div class="panel panel-info show0">
+    <div class="panel-heading">
+      <h3 class="mt0 pt5"><i class='icon-envelope'></i> Messages<span class="badge pull-right"><%= messages_count %></span></h3>
+    </div>
+    <div class="panel-body">
+      <% if the_messages.any? %>
+        <ul class="list-group mt0">
+          <div id="message_panel">
+            <%= render 'messages/messages_profile', messages: the_messages %>
+            <script>
+              if(<%= messages_count %>===5){ var m = 5}else{var m = 4}
+              for(var i = m; i < <%= messages_count %>; i++){
+                $('#message_' + i).hide().addClass('hidden_message');
+              }
+            </script>
+          </div>
+        </ul>
+          <%= (link_to '<i class="icon-chevron-sign-down"></i> Show All'.html_safe, '#', remote: true, class: "btn btn-sm btn-primary pull-right mt15 hide2 hide3", id: "showhide", title: "Mark as complete") if messages_count > 5 %>
+        <% else %>
+          <h4>No Messages Yet</h4>
+        <% end %>
+      </div>
+  </div>
