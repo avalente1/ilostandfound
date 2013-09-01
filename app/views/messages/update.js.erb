@@ -2,7 +2,10 @@ $('#myModal').modal('hide');
 $('#message_<%= @page_id %>').slideUp(500);
 $('.hidden_message').first().toggleClass('hidden_message').slideDown();
 $('.badge').html('<%= @message_count %>');
-if ( <%= @page_id %> <= n){
+if(<%= @page_id %><= n){
   n = n + 1
 }
 setTimeout(function(){$('#message_<%= @page_id %>').remove();}, 500);
+if($('#message_panel').children().length <= 6){
+  $('.hide3').remove();
+}
