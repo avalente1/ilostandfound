@@ -1,6 +1,6 @@
 <% messages.each_with_index do |message, i| %>
   <li class='list-group-item' id ='<%= "message_#{i}" %>'>
-    <%= link_to message.subject, message_url(message.id, page_id: i), remote: true, class: "model" %>
+    <%= link_to truncate(message.subject, length: 19), message_url(message.id, page_id: i), remote: true, class: "model" %>
     <%= link_to '<i class="icon-check-sign"></i> '.html_safe, message_url(message, page_id: i), method: :patch, remote: true, class: "pull-right" %>
   </li>
 <% end %>
