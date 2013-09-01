@@ -14,7 +14,7 @@
                 </h4>
               </div>
               <div class="panel-body">
-                <%= form_for(user) do |f| %>
+                <%= form_for(user, remote: true ) do |f| %>
                   <div class="field">
                     <%= f.text_field :first_name, class: "form-control", placeholder:"First Name" %>
                   </div>
@@ -41,7 +41,7 @@
         </div>
         <div class="modal-footer margin_model">
           <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close Window</button>
-          <%= f.button '<i class="icon-save"></i> Save'.html_safe, class: "btn btn-danger pt4and4 pull-right mr10", remote: true, title: "Save changes to your profile"  %>
+          <%= f.button '<i class="icon-save"></i> Save'.html_safe, class: "btn btn-danger pt4and4 pull-right mr10", title: "Save changes to your profile"  %>
 
           <% end %>
         </div>

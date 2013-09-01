@@ -44,10 +44,15 @@ class UsersController < ApplicationController
   end
 
   def update
+      respond_to do |format|
       if @user.update(user_params)
-        redirect_to @user, notice: 'Your profile has been sucessfully updated.'
+        flash[:notice] = 'Details Successfully update!'
+        format.js
+        format.html
       else
-        render action: 'edit'
+        format.js render 'update_fail'
+        format.html render action: 'edit'
+      end
       end
     end
 

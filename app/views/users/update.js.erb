@@ -1,0 +1,4 @@
+$('.profile-box').html('<%= j(render 'profile_box', user: @user) %>');
+$('#myModal2').modal('hide');
+$('.flash_msg').html('<%= j(render 'flash') %>').hide();
+$('.flash_msg').slideDown();
