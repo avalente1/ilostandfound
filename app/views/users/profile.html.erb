@@ -80,8 +80,9 @@
   <%= render 'print', user: @user %>
   <div id="myModal"></div>
   <script>
+    var n = 4;
     $('#showhide').on("click", function(){
-      for(var i = 4; i < <%= @messages_count %>; i++ ){
+      for(var i = n; i < <%= @messages_count %>; i++ ){
         $('#message_' + i).slideToggle();
       }
     });
