@@ -68,7 +68,7 @@
                   <%= current_user.point_tally %>
                 </li>
               </ul>
-                  <%= link_to '<i class="icon-edit-sign"></i> Edit'.html_safe, edit_user_path(@user), class: "btn btn-danger btn-sm pull-right mt15" %>
+                  <%= link_to '<i class="icon-edit-sign"></i> Edit'.html_safe, edit_user_path(@user), remote: true, class: "btn btn-danger btn-sm pull-right mt15" %>
             </div>
         </div>
 
@@ -92,6 +92,8 @@
 
   <%= render 'print', user: @user %>
   <div id="myModal"></div>
+  <div id="myModal2"></div>
+
   <script>
     var n = 4;
     $('#showhide').on("click", function(){
@@ -100,11 +102,11 @@
       }
       if( $('#showhide').hasClass('hide2')){
         $('#showhide').toggleClass('hide2');
-        $('#showhide').html('<%= j('<i class="icon-chevron-sign-up"></i> Hide'.html_safe) %>');
+        setTimeout(function(){$('#showhide').html('<%= j('<i class="icon-chevron-sign-up"></i> Hide'.html_safe) %>');}, 500);
       }
       else {
         $('#showhide').toggleClass('hide2');
-        $('#showhide').html('<%= j('<i class="icon-chevron-sign-down"></i> Show All'.html_safe) %>');
+        setTimeout(function(){$('#showhide').html('<%= j('<i class="icon-chevron-sign-down"></i> Show All'.html_safe) %>');}, 500);
       }
     });
 

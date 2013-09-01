@@ -3,7 +3,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">Message:</h4>
+          <h4 class="modal-title color_blue"><i class='icon-envelope'></i> Message:</h4>
         </div>
         <div class="modal-body">
           <ul class="list-unstyled">
@@ -14,7 +14,7 @@
                 </h4>
               </div>
               <div class="panel-body">
-                <li>From: <%= message.find.first_name %></li>
+                <li>From: <%= "#{message.find.first_name} #{message.find.last_name}" %></li>
                 <li>Cell number: <%= message.find.cell_number %></li>
                 <li>Email: <%= message.find.email %></li>
               </div>
@@ -26,7 +26,7 @@
         </div>
         <div class="modal-footer margin_model">
           <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close Window</button>
-          <%= link_to 'Complete <i class="icon-check"></i>'.html_safe, message_url(message, page_id: page_id), method: :patch, remote: true, class: "btn btn-primary pt4and4 pull-right", title: "Mark as complete" %>
+          <%= link_to '<i class="icon-check"></i> Complete'.html_safe, message_url(message, page_id: page_id), method: :patch, remote: true, class: "btn btn-primary pt4and4 pull-right", title: "Mark as complete" %>
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
