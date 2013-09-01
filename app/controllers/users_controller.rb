@@ -45,14 +45,12 @@ class UsersController < ApplicationController
 
   def update
       respond_to do |format|
-      if @user.update(user_params)
-        flash[:notice] = 'Details Successfully update!'
-        format.js
-        format.html
-      else
-        format.js render 'update_fail'
-        format.html render action: 'edit'
-      end
+        if @user.update(user_params)
+          flash.now[:notice] = 'Details Successfully update!'
+          format.js
+        else
+          format.js { render action: 'edit'}
+        end
       end
     end
 

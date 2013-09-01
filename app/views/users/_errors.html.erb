@@ -1,0 +1,10 @@
+<% if user.errors.any? %>
+  <div id="error_explanation">
+    <h5 class="modal-title color_red mb10"> <%= pluralize(user.errors.count, "Error") %> prohibited this user from being saved:</h5>
+    <ul class="no-style">
+      <% user.errors.full_messages.each do |msg| %>
+        <li class="alert alert-warning"><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
