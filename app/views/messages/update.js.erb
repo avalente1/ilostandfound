@@ -1,5 +1,7 @@
 $('#myModal').modal('hide');
-$('#message_<%= @page_id %>').slideUp();
+$('#message_<%= @page_id %>').slideUp().remove();
 $('.hidden_message').first().toggleClass('hidden_message').slideDown();
 $('.badge').html('<%= @message_count %>');
-n = n + 1
+if ( <%= @page_id %> < 4){
+  n = n + 1
+}
