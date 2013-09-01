@@ -6,6 +6,7 @@ if(<%= @page_id %><= n){
   n = n + 1
 }
 setTimeout(function(){$('#message_<%= @page_id %>').remove();}, 500);
-if($('#message_panel').children().length <= 6){
+if($('#message_panel').children().length <= 7){
   $('.hide3').remove();
+  setTimeout(function(){$('.hidden_message').slideDown();}, 500);
 }
