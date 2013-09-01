@@ -21,7 +21,7 @@
                     </script>
                   </div>
                 </ul>
-                  <%= link_to '<i class="icon-chevron-sign-down"></i> Show All'.html_safe, '#', remote: true, class: "btn btn-sm btn-primary pull-right mt15 hide2", id: "showhide", title: "Mark as complete" %>
+                  <%= (link_to '<i class="icon-chevron-sign-down"></i> Show All'.html_safe, '#', remote: true, class: "btn btn-sm btn-primary pull-right mt15 hide2", id: "showhide", title: "Mark as complete") if @messages_count > 4 %>
                 <% else %>
                   <h4>No Messages Yet</h4>
                 <% end %>

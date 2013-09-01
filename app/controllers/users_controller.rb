@@ -66,8 +66,10 @@ class UsersController < ApplicationController
 
 
 
-  # profile page
-  # javascript
+  # profile page - inline edit for profile box, truncate email address
+  # push with workers - hirefire
+  # password reset - edit
+  # fix printing
   # TODO geolocation
   # cooler qrcodes
   # payments
