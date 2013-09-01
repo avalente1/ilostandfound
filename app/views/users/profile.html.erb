@@ -4,27 +4,29 @@
       <%= render 'flash' %>
     </div>
     <div class="row userview">
-      <% if @messages.any? %>
         <div class="col-xs-12 col-sm-6 col-md-3 mt10">
           <div class="panel panel-info show0">
             <div class="panel-heading">
               <h3 class="mt0 pt5"><i class='icon-envelope'></i> Messages<span class="badge pull-right"><%= @messages_count %></span></h3>
             </div>
             <div class="panel-body">
-              <ul class="list-group mt0">
-                <div id="message_panel">
-                  <%= render 'messages/messages_profile', messages: @messages %>
-                  <script>
-                    for(var i = 4; i < <%= @messages_count %>; i++){
-                      $('#message_' + i).hide().addClass('hidden_message');
-                    }
-                  </script>
-                </div>
-              </ul>
-                <%= link_to '<i class="icon-chevron-sign-down"></i> Show All'.html_safe, '#', remote: true, class: "btn btn-sm btn-primary pull-right mt15 hide2", id: "showhide", title: "Mark as complete" %>
-            </div>
+              <% if @messages.any? %>
+                <ul class="list-group mt0">
+                  <div id="message_panel">
+                    <%= render 'messages/messages_profile', messages: @messages %>
+                    <script>
+                      for(var i = 4; i < <%= @messages_count %>; i++){
+                        $('#message_' + i).hide().addClass('hidden_message');
+                      }
+                    </script>
+                  </div>
+                </ul>
+                  <%= link_to '<i class="icon-chevron-sign-down"></i> Show All'.html_safe, '#', remote: true, class: "btn btn-sm btn-primary pull-right mt15 hide2", id: "showhide", title: "Mark as complete" %>
+                <% else %>
+                  <h4>No Messages Yet</h4>
+                <% end %>
+              </div>
           </div>
-        <% end %>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-3 mt10">
         <div class="panel panel-warning">
