@@ -10,3 +10,5 @@ if($('#message_panel').children().length <= 7){
   $('.hide3').remove();
   setTimeout(function(){$('.hidden_message').slideDown();}, 500);
 }
+$('.flash_msg').html('<%= j(render 'users/flash') %>').hide();
+$('.flash_msg').slideDown();
