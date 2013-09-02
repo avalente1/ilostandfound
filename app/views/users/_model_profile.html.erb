@@ -13,6 +13,7 @@
                 <li>From: <%= "#{message.find.first_name} #{message.find.last_name}" %></li>
                 <li>Cell number: <%= message.find.cell_number %></li>
                 <li>Email: <%= message.find.email %></li>
+                <li class = "geolocation">Location: <%= "#{message.try(:latitude)} #{message.try(:longitude)}" %></li>
               </div>
               <div class="panel-footer">
                 <li><%= message.text %></li>
@@ -22,8 +23,12 @@
         </div>
         <div class="modal-footer margin_model">
           <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close Window</button>
-          <%= link_to '<i class="icon-check"></i> Complete'.html_safe, message_url(message, page_id: page_id), method: :patch, remote: true, class: "btn btn-primary pt4and4 pull-right", title: "Mark as complete" %>
+          <%= link_to '<i class="icon-check"></i> Complete'.html_safe, message_url(message, page_id: page_id), method: :patch, remote: true, class: "btn btn-primary pt4and4 pull-right","data-toggle" => "returned", title: "Mark item as returned", "data-placement" => "left", id: "returned" %>
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div>
+
+  <script>
+    $('#returned').tooltip().ready()
+  </script

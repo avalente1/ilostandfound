@@ -6,7 +6,7 @@
     <div class="text-center">
       <%= image_tag user.qrcode, class: "img_size" %><br>
       <%= link_to_function('<i class="icon-print"></i> Print QR Codes'.html_safe, "javascript:print()", class: "btn btn-primary mb10", id: "print_qrcode", "data-toggle" => "print_qrcode", title:"Tag your valuables with your QR Code!", "data-placement" => "left") %><br>
-      <%= link_to '<i class="icon-signal"></i> View Stats'.html_safe, "http://goo.gl/#analytics/goo.gl/#{user.qr_code_uid}/all_time", target: "_blank", class: "btn btn-success mb10", id: "view_stats","data-toggle" => "print_qrcode", title: "View QR code analytics", "data-placement" => "left" %>
+      <%= link_to '<i class="icon-signal"></i> View Stats'.html_safe, "http://goo.gl/#analytics/goo.gl/#{user.qr_code_uid}/all_time", target: "_blank", class: "btn btn-success mb10", id: "view_stats","data-toggle" => "print_qrcode", title: "View your QR code analytics", "data-placement" => "left" %>
     </div>
   </div>
 </div>
