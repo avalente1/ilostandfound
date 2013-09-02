@@ -1,18 +1,14 @@
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header color_blue roundcornertop5">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title color_blue"><i class='icon-envelope'></i> Message:</h4>
+          <h4 class="modal-title color_blue"><i class='icon-envelope'></i> <%= message.subject %>:</h4>
         </div>
         <div class="modal-body">
           <ul class="list-unstyled">
             <div class="panel panel-info">
-              <div class="panel-heading">
-                <h4><%= message.subject %>
 
-                </h4>
-              </div>
               <div class="panel-body">
                 <li>From: <%= "#{message.find.first_name} #{message.find.last_name}" %></li>
                 <li>Cell number: <%= message.find.cell_number %></li>
