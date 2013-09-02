@@ -13,7 +13,7 @@
                 <li>From: <%= "#{message.find.first_name} #{message.find.last_name}" %></li>
                 <li>Cell number: <%= message.find.cell_number %></li>
                 <li>Email: <%= message.find.email %></li>
-                <li class = "geolocation">Location: <%= "#{message.try(:latitude)} #{message.try(:longitude)}" %></li>
+                <li class = "geolocation">Approx. Location: <%= message.try(:ip_address) %></li>
               </div>
               <div class="panel-footer">
                 <li><%= message.text %></li>

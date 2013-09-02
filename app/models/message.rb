@@ -1,5 +1,4 @@
 class Message < ActiveRecord::Base
-
   validates :subject, presence: true
   validates :text, presence: true
   validates :find_id, presence: true
@@ -7,6 +6,9 @@ class Message < ActiveRecord::Base
 
   belongs_to :owner, class_name: 'User'
   belongs_to :find, class_name: 'User'
+
+  reverse_geocoded_by :latitude, :longitude, :address => :ip_address
+  after_validation :reverse_geocode
 
   after_create :add_point
   # after_create :twilio_lost_item_notification
