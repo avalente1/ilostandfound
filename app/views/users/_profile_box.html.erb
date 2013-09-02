@@ -9,11 +9,11 @@
         <%= "#{user.first_name} #{user.last_name}" %>
       </li>
       <li class="list-group-item">
-        <strong>Cell number:</strong>
-        <%= user.cell_number %>
+        <strong>Mobile #:</strong>
+        <%= "(#{user.cell_number[0..2]}) #{user.cell_number[3..5]}-#{user.cell_number[6..9]}" %>
       </li>
       <li class="list-group-item">
-        <strong>Email</strong>
+        <strong>Email:</strong>
         <%= user.email %>
       </li>
       <li class="list-group-item">
