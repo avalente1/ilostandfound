@@ -37,6 +37,7 @@
     <br>
     <%= f.text_area :text, class: "test_area_size form-control", placeholder: "Message to the owner" %>
     <%= hidden_field_tag :owner_id, @user.id %>
+    <%= hidden_field_tag :lat_lng, cookies[:lat_lng] %>
   </div>
   <div class="actions">
     <br>

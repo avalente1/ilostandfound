@@ -3,10 +3,9 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     @message.owner_id = params[:owner_id]
-    @lat_lng = cookies[:lat_lng].split('%')
+    @lat_lng = params[:lat_lng].split('|')
     @message.latitude = @lat_lng.first
-    @lat_lng_split = @lat_lng.last.split('-')
-    @message.longitude = @lat_lng_split.last
+    @message.longitude = @lat_lng.last
     if current_user.present?
       @message.find_id = current_user.id
       if @message.save
