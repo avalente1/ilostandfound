@@ -3,8 +3,15 @@
     <h3 class="mt0 pt5"><i class="icon-trophy"></i> Badges</h3>
   </div>
   <div class="panel-body text-center ptpb30">
-      <%= image_tag asset_path('checkmark.png'), class: "badge_img mt10", id: "checkmark", title: "After successfully returning one item, you will receive the Checkmark badge!" %>
-      <%= image_tag asset_path('thumbs_up.png'), class: "badge_img mt10", id: "thumbs_up", title: "After successfully returning two items, you will receive the Thumbs Up badge!"  %>
-      <%= image_tag asset_path('angel.png'), class: "badge_img mt10", id: "angel", title: "After successfully returning three items, you will receive the Angel badge!"  %>
+      <%= image_tag asset_path('checkmark.png'), class: "badge_img mt10", id: "checkmark", title: "After successfully returning one item, you will receive the Checkmark badge!", "data-toggle" => "print_qrcode", "data-placement" => "top" %>
+      <%= image_tag asset_path('thumbs_up.png'), class: "badge_img mt10", id: "thumbs_up", title: "After successfully returning two items, you will receive the Thumbs Up badge!","data-toggle" => "print_qrcode", "data-placement" => "top"  %>
+      <%= image_tag asset_path('angel.png'), class: "badge_img mt10", id: "angel", title: "After successfully returning three items, you will receive the Angel badge!","data-toggle" => "print_qrcode", "data-placement" => "bottom"  %>
   </div>
 </div>
+
+
+<script>
+  $('#checkmark').tooltip().ready()
+  $('#thumbs_up').tooltip().ready()
+  $('#angel').tooltip().ready()
+</script>

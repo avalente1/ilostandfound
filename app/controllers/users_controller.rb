@@ -37,7 +37,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       User.email_sign_up(@user.id)
       # User.delay.email_sign_up(@user.id)
-      redirect_to(@user, :notice => 'Successfully created your acconut.  Here is your unique QR code to print and place on valuables!')
+      redirect_to(@user, :success => 'Successfully created your acconut.  Here is your unique QR code to print and place on valuables!')
     else
       render :new
     end
@@ -72,15 +72,14 @@ class UsersController < ApplicationController
 
 
 
+  # TODO
   # profile page - inline edit for profile box, truncate email address
   # push with workers - hirefire
-  # password reset - edit
-  # fix printing
-  # TODO geolocation
+  # fix printing format
   # cooler qrcodes
   # payments
   # priettier emails
-  # annomoius email
+  # anonymous email
   # fedex /wedeliver
   # get stickers printer - api stickermuel
   # lose a phone experiement
