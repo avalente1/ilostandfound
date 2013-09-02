@@ -42,6 +42,7 @@ class MessagesController < ApplicationController
       @message.complete = true
       @message.save
       @message_count = Message.where(owner_id: @message.owner.id, complete: false).count
+      flash.now[:info] = 'Message marked complete'
       respond_to do |format|
           format.js
       end
