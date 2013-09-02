@@ -40,6 +40,43 @@
   </div>
   <div class="actions">
     <br>
-    <%= f.button "Send", class: "btn btn-lg btn-send  btn-block" %>
+    <%= f.button "Send", class: "btn btn-lg btn-send btn-block", onclick: "getLocation()" %>
   </div>
 <% end %>
+
+<p id = "geolocation">
+</p>
+
+<script>
+  var x=document.getElementById("geolocation");
+
+  getGeoLocation();
+
+  // function getLocation() {
+  // if (navigator.geolocation)
+  //   {
+  //   navigator.geolocation.getCurrentPosition(showPosition);
+  //   }
+  // else{x.innerHTML="Geolocation is not supported by this browser.";}
+  // }
+
+  // function showPosition(position) {
+  // x.innerHTML="Latitude: " + position.coords.latitude +
+  // "<br>Longitude: " + position.coords.longitude;
+  // }
+
+  // $('geolocation').html('latitude', 'longitude')
+  // var latitude = position.coords.latitude;
+  // var longitude = position.coords.longitude;
+
+  function getGeoLocation() {
+  navigator.geolocation.getCurrentPosition(setGeoCookie);
+}
+
+function setGeoCookie(position) {
+  var cookie_val = position.coords.latitude + "|" + position.coords.longitude;
+  document.cookie = "lat_lng=" + escape(cookie_val);
+}
+
+
+</script>
