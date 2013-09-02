@@ -46,7 +46,7 @@ class UsersController < ApplicationController
   def update
       respond_to do |format|
         if @user.update(user_params)
-          flash.now[:notice] = 'Details Successfully update!'
+          flash.now[:success] = 'Details Successfully update!'
           format.js
         else
           format.js { render action: 'edit'}
