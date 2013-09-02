@@ -31,7 +31,7 @@ class MessagesController < ApplicationController
         # Message.delay.twilio_lost_item_notification(@message.id)
         Message.email_lost_item_notification(@message.id)
         # Message.delay.email_lost_item_notification(@message.id)
-        flash[:notice] = "Thank you! The owner has been notified. Now you can also use iLostAndFound to protect your valuables.  Thanks for paying it forward!"
+        flash[:success] = "Thank you! The owner has been notified. Now you can also use iLostAndFound to protect your valuables.  Thanks for paying it forward!"
         # @user.ip_address = request.ip
         # @user.save
         redirect_to user_url(current_user)
